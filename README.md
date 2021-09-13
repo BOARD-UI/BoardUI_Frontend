@@ -34,3 +34,6 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 
 ### Aceptar - Rechazar Requests
 ![](Img/Aceptar-RechazarRequest.png)
+
+# Enlace Taiga :link:
+https://tree.taiga.io/project/angiemeg-boardui/timeline
