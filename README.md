@@ -24,6 +24,8 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 
 ### Unirse a una Sala
 ![](Img/UnirseSala.png)
+### Dejar una Sala
+![](Img/DejarSala.png)
 
 ### Editor de texto
 ![](Img/EditorTexto.png)
