@@ -43,3 +43,6 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 
 # Enlace Taiga :link:
 https://tree.taiga.io/project/angiemeg-boardui/timeline
+
+# Enlace Heroku :link:
+https://board-ui.herokuapp.com/
