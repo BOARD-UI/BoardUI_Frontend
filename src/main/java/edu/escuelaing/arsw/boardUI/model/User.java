@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.boardUI.security.model;
+package edu.escuelaing.arsw.boardUI.model;
 
 import java.util.Collection;
 import java.util.List;

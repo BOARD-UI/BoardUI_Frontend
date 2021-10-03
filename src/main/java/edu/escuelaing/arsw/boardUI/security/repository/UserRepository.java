@@ -1,12 +1,12 @@
 package edu.escuelaing.arsw.boardUI.security.repository;
 
-import java.util.Optional; 
-import org.springframework.data.jpa.repository.JpaRepository; 
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import edu.escuelaing.arsw.boardUI.security.model.*;
+import edu.escuelaing.arsw.boardUI.model.User;
 
-@Repository 
-public interface UserRepository extends JpaRepository<User, String> { 
-   Optional<User> findUserByUsername(String username); 
+@Repository
+public interface UserRepository extends JpaRepository<User, String> {
+   Optional<User> findUserByUsername(String username);
 }
