@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoardUI</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
-    <form method="POST" action="/login">
+    <form method="POST" action="/login" name="f">
         <div class="container">
             <div class="bs-component">
                 
@@ -30,11 +30,11 @@
                             <div class="centered-column">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="far fa-user"></i></span>
-                                    <input type="text" class="form-control" aria-label="Username" placeholder="User">
+                                    <input type="text" class="form-control" aria-label="Username" placeholder="User" name="username">
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
-                                    <input type="password" class="form-control" aria-label="Password" placeholder="Password">
+                                    <input type="password" class="form-control" aria-label="Password" placeholder="Password" name="password">
                                 </div>
                             </div>
                             <div class="centered-column">
@@ -45,7 +45,7 @@
                                     </div>
                                     <a href="#" style="font-size: small; margin-bottom: 0.8vh;">Forgot your password?</a>
                                 </div>
-                                <input type="button" value="Login!" class="btn btn-secondary login-btn">
+                                <input type="submit" value="Login!" class="btn btn-secondary login-btn">
                             </div>
                         </div>    
                     </div>
@@ -78,7 +78,15 @@
             </div>
         </div>
     </form>
+    <script src="../js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded",() => {
+            for(tab of document.getElementsByClassName("nav-item")){
+                tab.addEventListener("click", () => { login.switchFormulary() });
+            }
+        });
+    </script>
 </body>
 </html>
 
