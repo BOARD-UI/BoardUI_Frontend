@@ -15,31 +15,44 @@ Board.UI es una herramienta de colaboración en tiempo real que permitirá a mil
 
 Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron principalmente los editores de texto que normalmente usamos para el desarrollo de nuestros proyectos.
 
-# Mockups
+# Mockups 
 
 ### Login y SignUP
-![](Img/LogIn.png)
-![](Img/SignUp.png)
+![](Img/MockUps/LogIn.png)
+![](Img/MockUps/SignUp.png)
 
 ### Crear una Sala
-![](Img/CrearSala.png)
-![](Img/CrearSala,SubirArchivos.png)
-![](Img/ConfiguracionSala.png)
+![](Img/MockUps/CrearSala.png)
+![](Img/MockUps/CrearSala,SubirArchivos.png)
+![](Img/MockUps/ConfiguracionSala.png)
 
 ### Unirse a una Sala
-![](Img/UnirseSala.png)
+![](Img/MockUps/UnirseSala.png)
 ### Dejar una Sala
-![](Img/DejarSala.png)
+![](Img/MockUps/DejarSala.png)
 
 ### Editor de texto
-![](Img/EditorTexto.png)
+![](Img/MockUps/EditorTexto.png)
 #### Subir archivos como Asistente de la sala
-![](Img/Editor-SubirArchivo.png)
+![](Img/MockUps/Editor-SubirArchivo.png)
 ### Board
-![](Img/Editor-Board.png)
+![](Img/MockUps/Editor-Board.png)
 
 ### Aceptar - Rechazar Requests
-![](Img/Aceptar-RechazarRequests.png)
+![](Img/MockUps/Aceptar-RechazarRequests.png)
+
+# Diagramas ✏️📐
+
+### Diagrama Entidad Relación
+
+### Diagrama de Despliegue
+![](Img/Diagramas/DiagramaDespliegue.PNG)
+### Diagrma de Componentes
+![](Img/Diagramas/DiagramaComponentes.PNG)
 
 # Enlace Taiga :link:
 https://tree.taiga.io/project/angiemeg-boardui/timeline
+
+
+# Enlace Heroku :link:
+https://board-ui.herokuapp.com/
