@@ -1,0 +1,46 @@
+*, *::after, *::before {
+    margin: 0px;
+}
+
+body {
+    background-image: linear-gradient(#17082e 0%, #1a0933 7%, #220c44 80%, #0f051f 100%);
+    background-color: #1A0933;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centered-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.centered-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-check:nth-child(n){
+    font-size: small;
+}
+
+.login-options {
+    padding: 2vh;
+    justify-content: space-between;
+}
+
+.login-btn {
+    width: 40%;
+}
+
+.width-card {
+    width: 25vw;
+}
