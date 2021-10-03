@@ -3,33 +3,34 @@ package edu.escuelaing.arsw.boardUI.security.model;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Entity; 
-import javax.persistence.Id; 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails; 
+import org.springframework.security.core.userdetails.UserDetails;
 
-@Entity 
+@Entity
 @Table(name = "users")
-public class User implements UserDetails{
+public class User implements UserDetails {
 
-    @Id 
-    private String username; 
+    @Id
+    private String username;
     private String password;
     private boolean enabled;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String username, String password, boolean enabled) { 
-        this.username = username; 
-        this.password = password; 
-        this.enabled = enabled; 
-     } 
+    public User(String username, String password, boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() -> "read"); 
+        return List.of(() -> "read");
     }
 
     public void setPassword(String password) {
@@ -73,5 +74,5 @@ public class User implements UserDetails{
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-    
+
 }
