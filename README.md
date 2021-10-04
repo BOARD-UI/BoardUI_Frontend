@@ -1,10 +1,10 @@
 # BOARD.UI
-# Integrantes
- - Angie Medina
- - Jose Perez
- - Luis Amaya
- - Sebastian Mina 
-# Resumen
+## Integrantes
+-  Angie Medina
+-  Jose Perez
+-  Luis Amaya
+-  Sebastian Mina 
+## Resumen
 Tiempos modernos, UI’s modernas. Board.UI, es una herramienta para frontend developers que facilitará el flujo creativo de ideas y optimizará el proceso de creación de interfaces amigables para el usuario. 
 
 ## Descripcion
@@ -15,9 +15,9 @@ Board.UI es una herramienta de colaboración en tiempo real que permitirá a mil
 
 Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron principalmente los editores de texto que normalmente usamos para el desarrollo de nuestros proyectos.
 
-# Mockups 
+## Mockups 
 
-### Login y SignUP
+### Login y SignUp
 ![](Img/MockUps/LogIn.png)
 ![](Img/MockUps/SignUp.png)
 
@@ -41,7 +41,7 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 ### Aceptar - Rechazar Requests
 ![](Img/MockUps/Aceptar-RechazarRequests.png)
 
-# Diagramas ✏️📐
+## Diagramas ✏️📐
 
 ### Diagrama Entidad Relación
 ![](Img/Diagramas/DiagramaEntidadRelacion1.PNG)
@@ -53,11 +53,11 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 ### Diagrma de Componentes
 ![](Img/Diagramas/DiagramaComponentes.PNG)
 
-# Enlace Taiga :link:
+## Enlace Taiga 🔗
 https://tree.taiga.io/project/angiemeg-boardui/timeline
 
 
-# Enlace Heroku :link:
+## Enlace Heroku 🔗
 https://board-ui.herokuapp.com/
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/1c29dacb74cd4b28a85e7fc3d5392d4d)](https://www.codacy.com/gh/BOARD-UI/BOARD.UI/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BOARD-UI/BOARD.UI&amp;utm_campaign=Badge_Grade)
