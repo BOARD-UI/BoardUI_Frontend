@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.boardUI.model;
+package edu.escuelaing.arsw.boardUI.controllers;
 
 import javax.json.JsonObject;
 
