@@ -32,12 +32,12 @@ body {
     font-size: small;
 }
 
-.login-options {
+.form-options {
     padding: 2vh;
     justify-content: space-between;
 }
 
-.login-btn {
+.submit-btn {
     width: 40%;
 }
 

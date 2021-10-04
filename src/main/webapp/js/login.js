@@ -1,29 +1,25 @@
-login = (function(){
+submitService = (function(){
 
-    let _currentTab;
-
-    switchFormulary = function(){
-        _currentTab =  document.getElementsByClassName("tab-pane fade active")[0];
-    };
-
-    _generateLoginJson = function(){
-
+    _generateJson = function(...args){
+        let json = {};
+        for(let argument of args){
+            let htmlElement = document.getElementById(argument);
+            json[argument.replace("login_","").replace("reg_","")] = htmlElement.value;
+        }
+        return json;
     }
 
     postRegister = function(){
-        if(_currentTab.id == 'login'){
-            
-        }else {
-
-        }
+        let json = _generateJson("reg_name","reg_username","reg_mail","reg_password");
+        $.post("");
     };
 
     postLogin = function(){
-
+        let json = _generateJson("login_username","login_password");
+        $.post("");
     }
 
     return {
-        switchFormulary: switchFormulary,
         login: postLogin,
         register: postRegister
     };

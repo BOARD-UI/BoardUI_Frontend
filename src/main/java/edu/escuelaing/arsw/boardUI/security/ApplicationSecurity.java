@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.boardUI.services.security;
+package edu.escuelaing.arsw.boardUI.security;
 
 import javax.sql.DataSource;
 
@@ -34,13 +34,13 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
         .anyRequest().authenticated()
         .and().formLogin()
-        .loginPage("/login").permitAll();
+        .loginPage("/welcome").permitAll();
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-        .antMatchers("/css/**", "/images/**", "/public/**");
+        .antMatchers("/css/**", "/js/**", "/public/**");
     }
 
     @Bean

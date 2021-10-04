@@ -44,7 +44,10 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 # Diagramas ✏️📐
 
 ### Diagrama Entidad Relación
-
+![](Img/Diagramas/DiagramaEntidadRelacion1.PNG)
+![](Img/Diagramas/DiagramaEntidadRelacion2.PNG)
+### Diagrama Casos de uso
+![](Img/Diagramas/DiagramaCasosUso.PNG)
 ### Diagrama de Despliegue
 ![](Img/Diagramas/DiagramaDespliegue.PNG)
 ### Diagrma de Componentes
