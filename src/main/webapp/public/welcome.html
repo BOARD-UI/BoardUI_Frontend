@@ -11,6 +11,7 @@
 </head>
 <body>
     <div class="container">
+        <form action="/welcom" method="POST" name="f">
         <div class="bs-component">
             
             <ul class="nav nav-tabs">
@@ -29,11 +30,11 @@
                         <div class="centered-column">
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="far fa-user"></i></span>
-                                <input type="text" class="form-control" aria-label="Username" placeholder="User" id="login_username">
+                                <input type="text" class="form-control" aria-label="Username" placeholder="User" id="login_username" name="username">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
-                                <input type="password" class="form-control" aria-label="Password" placeholder="Password" id="login_password">
+                                <input type="password" class="form-control" aria-label="Password" placeholder="Password" id="login_password" name="password">
                             </div>
                         </div>
                         <div class="centered-column">
@@ -44,7 +45,7 @@
                                 </div>
                                 <a href="#" style="font-size: small; margin-bottom: 0.8vh;">Forgot your password?</a>
                             </div>
-                            <input type="button" value="Login!" class="btn btn-secondary submit-btn" id="login_button">
+                            <input type="submit" value="Login!" class="btn btn-secondary submit-btn" id="login_button">
                         </div>
                     </div>    
                 </div>
@@ -73,8 +74,8 @@
                     </div>  
                 </div>
             </div>
-
         </div>
+    </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="/js/login.js"></script>

@@ -25,16 +25,15 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     throws Exception {
         auth.jdbcAuthentication()
         .dataSource(dataSource)
-        .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?")
-        .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM users WHERE username = ?");
+        .usersByUsernameQuery("SELECT name, password, TRUE FROM users WHERE name = ?")
+        .authoritiesByUsernameQuery("SELECT name, 'ROLE_USER' FROM users WHERE name = ?");
     }
 
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
         .anyRequest().authenticated()
-        .and().formLogin()
-        .loginPage("/welcome").permitAll();
+        .and().formLogin();
     }
 
     @Override
