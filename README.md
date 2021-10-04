@@ -59,3 +59,5 @@ https://tree.taiga.io/project/angiemeg-boardui/timeline
 
 # Enlace Heroku :link:
 https://board-ui.herokuapp.com/
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1c29dacb74cd4b28a85e7fc3d5392d4d)](https://www.codacy.com/gh/BOARD-UI/BOARD.UI/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BOARD-UI/BOARD.UI&amp;utm_campaign=Badge_Grade)
