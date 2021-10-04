@@ -13,15 +13,15 @@ import edu.escuelaing.arsw.boardUI.model.User;
 
 @RestController
 public class BoardUIApiController {
-    
-    @RequestMapping(path ="/welcome/NewUser", method = RequestMethod.POST)	
-    public ResponseEntity<?> CreateNewUser(@RequestBody JsonObject newUser){
+
+    @RequestMapping(path = "/welcome/NewUser", method = RequestMethod.POST)
+    public ResponseEntity<?> CreateNewUser(@RequestBody JsonObject newUser) {
         try {
             System.out.println(newUser);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception ex) {        
-            return new ResponseEntity<>(HttpStatus.CREATED);  
-        }        
+        } catch (Exception ex) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
 
     }
 }
