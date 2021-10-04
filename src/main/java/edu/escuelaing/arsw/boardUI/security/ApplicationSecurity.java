@@ -1,5 +1,6 @@
 package edu.escuelaing.arsw.boardUI.security;
 
+import javax.annotation.security.PermitAll;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
         .anyRequest().authenticated()
-        .and().formLogin();
+        .and().formLogin().loginPage("/welcome").permitAll();
     }
 
     @Override
