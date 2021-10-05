@@ -15,5 +15,4 @@ public class MVCController {
     public String getLoginPage() {
         return "/public/welcome.html";
     }
-    
 }

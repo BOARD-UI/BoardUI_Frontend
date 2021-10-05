@@ -1,27 +1,50 @@
 package edu.escuelaing.arsw.boardUI.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
+/**
+ * Class that corresponds to the Rooms table in the database
+ * @author Luis Amaya
+ * @author Angie Medina
+ * @author Sebastian Mina
+ * @author Jose Perez
+ * @version 1.0
+ */
 
-public class Room {
+@Entity
+@Table(name = "rooms")
+public class Room { 
 
-    private String idRoom;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "room_id")
+    private int roomId;
+
     private String title;
-    private Integer num_Members;
+
+    @Column(name = "num_members")
+    private Integer numMembers;
+
     private String URL;
 
     public Room() {
     }
 
-    public Room(String idRoom, String title, Integer num_Members, String URL) {
-        this.idRoom = idRoom;
+    public Room(int roomId, String title, Integer numMembers, String URL) {
+        this.roomId = roomId;
         this.title = title;
-        this.num_Members = num_Members;
+        this.numMembers = numMembers;
         this.URL = URL;
 
     }
 
-    public String getId() {
-        return idRoom;
+    public int getRoomId() {
+        return roomId;
     }
 
     public String gettitle() {
@@ -33,21 +56,20 @@ public class Room {
     }
 
     public void addMember(Integer members) {
-        this.num_Members += members;
+        this.numMembers += members;
     }
 
     public void subsMember() {
-        this.num_Members -= 1;
+        this.numMembers -= 1;
     }
 
     public void subsMember(Integer members) {
-        this.num_Members -= members;
+        this.numMembers -= members;
     }
 
     @Override
     public String toString() {
-        return "Sala{ idRoom= " + idRoom + ", title= " + title + "Numero de members= " + num_Members + " URL= " + URL
-                + "}";
+        return "Room{ roomId= " + roomId + ", title= " + title + ", Number of members= " + numMembers + ", URL= " + URL + "}";
     }
 
     @Override
@@ -65,10 +87,10 @@ public class Room {
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Objects.equals(this.num_Members, other.num_Members)) {
+        if (!Objects.equals(this.numMembers, other.numMembers)) {
             return false;
         }
-        if (!Objects.equals(this.idRoom, other.idRoom)) {
+        if (!Objects.equals(this.roomId, other.roomId)) {
             return false;
         }
         if (!Objects.equals(this.URL, other.URL)) {
