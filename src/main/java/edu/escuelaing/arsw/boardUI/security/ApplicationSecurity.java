@@ -24,8 +24,8 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     throws Exception {
         auth.jdbcAuthentication()
         .dataSource(dataSource)
-        .usersByUsernameQuery("SELECT name, password, TRUE FROM users WHERE name = ?")
-        .authoritiesByUsernameQuery("SELECT name, 'ROLE_USER' FROM users WHERE name = ?");
+        .usersByUsernameQuery("SELECT username, password, TRUE FROM users WHERE username = ?")
+        .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM users WHERE username = ?");
     }
 
     @Override
