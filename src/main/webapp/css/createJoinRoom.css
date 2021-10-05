@@ -3,6 +3,7 @@
 */
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
@@ -68,10 +69,11 @@ a:focus {
     background: #fff;
 }
 
-#sidebar ul li a.active{
+#sidebar ul li a.active {
     color: #7386D5;
     background: #fff;
 }
+
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -82,14 +84,14 @@ a:focus {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 100px;
 }
 
 
-.card-body{
+.card-body {
     border-style: solid;
     border-radius: 12px;
 }
@@ -109,10 +111,32 @@ a:focus {
     #sidebar {
         margin-left: -250px;
     }
+
     #sidebar.active {
         margin-left: 0;
     }
+
     #sidebarCollapse span {
         display: none;
     }
+}
+
+/* ---------------------------------------------------
+    Buttons
+----------------------------------------------------- */
+
+button {
+    background-color: #6d7fcc;
+    color: beige;
+    border-radius: 5px;
+}
+
+.createButton {
+    background-color: #6d7fcc;
+    color: beige;
+    border-radius: 5px;
+}
+
+input {
+    border-radius: 5px;
 }

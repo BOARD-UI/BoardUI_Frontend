@@ -6,6 +6,8 @@ import edu.escuelaing.arsw.boardUI.persistence.BoardUINotFoundException;
 import edu.escuelaing.arsw.boardUI.persistence.IRoomPersistence;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Repository
+@ComponentScan({ "edu.escuelaing.ars.boardUI.persistence.repo" })
 public class RoomPersistenceImpl implements IRoomPersistence {
 
     @Autowired
@@ -21,11 +24,12 @@ public class RoomPersistenceImpl implements IRoomPersistence {
     @PersistenceContext
     EntityManager manager;
 
-    public RoomPersistenceImpl(){}
+    public RoomPersistenceImpl() {
+    }
 
     @Override
     public void saveRoom(Room room) {
         ro.save(room);
     }
-    
+
 }
