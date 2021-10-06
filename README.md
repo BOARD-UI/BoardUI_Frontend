@@ -1,13 +1,14 @@
 # BOARD.UI
 ## Integrantes
--  Angie Medina
--  Jose Perez
--  Luis Amaya
--  Sebastian Mina 
+-  Angie Tatiana Medina Gil
+-  Jose Ricardo Pérez de León
+-  Luis Gerardo Amaya Ortíz
+-  Juan Sebastián Mina Echavarría
+ 
 ## Resumen
 Tiempos modernos, UI’s modernas. Board.UI, es una herramienta para frontend developers que facilitará el flujo creativo de ideas y optimizará el proceso de creación de interfaces amigables para el usuario. 
 
-## Descripcion
+## Descripción
 
 Board.UI es una herramienta de colaboración en tiempo real que permitirá a miles de desarrolladores frontend desplegar sus diseños e ideas de forma ágil. Con esta propuesta se busca mejorar el trabajo de equipos de desarrolladores frontend.
 
