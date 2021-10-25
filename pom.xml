@@ -6,7 +6,7 @@
 	<groupId>edu.eci.arsw</groupId>
 	<artifactId>BOARD-UI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
 
 	<name>BOARD-UI</name>
