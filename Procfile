@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -jar target/BOARD-UI-0.0.1-SNAPSHOT.jar --port $PORT target/*.war
+web: java -Dserver.port=$PORT -jar target/BOARD-UI-0.0.1-SNAPSHOT.jar
