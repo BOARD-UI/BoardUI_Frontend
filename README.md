@@ -53,6 +53,8 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 ![](Img/Diagramas/DiagramaDespliegue.PNG)
 ### Diagrma de Componentes
 ![](Img/Diagramas/DiagramaComponentes.PNG)
+### Diagrama de Clases
+![](Img/Diagramas/DiagramaDeClases.PNG)
 
 ## Enlace Taiga 🔗
 https://tree.taiga.io/project/angiemeg-boardui/timeline
