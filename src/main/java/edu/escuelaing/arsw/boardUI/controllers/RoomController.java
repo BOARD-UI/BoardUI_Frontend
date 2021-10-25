@@ -7,6 +7,8 @@ import java.security.Principal;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.annotation.Generated;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+
 import edu.escuelaing.arsw.boardUI.services.impl.*;
 import edu.escuelaing.arsw.boardUI.model.File;
 import edu.escuelaing.arsw.boardUI.model.Room;
@@ -36,6 +40,15 @@ public class RoomController {
 
     @Autowired
     FileServices fs;
+
+    @Autowired
+    private Environment env;
+
+    @GetMapping("/prop/{key}")
+    @ResponseBody
+    public String getProp(@PathVariable String key){
+        return ""+key.replaceAll("_", ".")+": "+env.getProperty(key.replaceAll("_", "."));
+    }
 
     @GetMapping("/rooms")
     @ResponseBody
@@ -94,6 +107,5 @@ public class RoomController {
             fs.addFile(newFile);
         }
         return "Loaded!";
-		
 	}
 }
