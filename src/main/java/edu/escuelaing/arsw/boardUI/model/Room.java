@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
+
 /**
  * Class that corresponds to the Rooms table in the database
+ * 
  * @author Luis Amaya
  * @author Angie Medina
  * @author Sebastian Mina
@@ -18,7 +20,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "rooms")
-public class Room { 
+public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,12 +49,28 @@ public class Room {
         return roomId;
     }
 
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
     public String gettitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getURL() {
         return URL;
+    }
+
+    public void setURL(String uRL) {
+        URL = uRL;
+    }
+
+    public void setNumMembers(Integer numMembers) {
+        this.numMembers = numMembers;
     }
 
     public void addMember(Integer members) {
@@ -69,7 +87,8 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{ roomId= " + roomId + ", title= " + title + ", Number of members= " + numMembers + ", URL= " + URL + "}";
+        return "Room{ roomId= " + roomId + ", title= " + title + ", Number of members= " + numMembers + ", URL= " + URL
+                + "}";
     }
 
     @Override
