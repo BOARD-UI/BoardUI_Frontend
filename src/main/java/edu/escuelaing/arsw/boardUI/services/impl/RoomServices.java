@@ -1,5 +1,6 @@
 package edu.escuelaing.arsw.boardUI.services.impl;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,12 @@ import edu.escuelaing.arsw.boardUI.persistence.IRoomPersistence;
 import edu.escuelaing.arsw.boardUI.services.IRoomServices;
 
 @Service
-public class RoomServices implements IRoomServices {
+public class RoomServices implements IRoomServices{
 
     @Autowired
     IRoomPersistence rp;
 
-    public RoomServices() {
-    }
+    public RoomServices() {}
 
     @Override
     public void saveRoom(Room room) {
@@ -34,4 +34,5 @@ public class RoomServices implements IRoomServices {
         return rp.loadRoomFiles(roomID, userID);
     }
 
+    
 }

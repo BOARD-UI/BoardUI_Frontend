@@ -37,11 +37,9 @@ public class RoomPersistenceImpl implements IRoomPersistence {
     @Override
     public List<Room> loadRoomsByUser(int userID) {
         List<Room> rooms = new LinkedList<>();
-        Query query = manager.createNativeQuery(
-                "SELECT x.room_id, title, num_members, url FROM rooms x JOIN permissions y ON x.room_id = y.room_id WHERE user_id = ?",
-                Room.class);
+        Query query = manager.createNativeQuery("SELECT x.room_id, title, num_members, url FROM rooms x JOIN permissions y ON x.room_id = y.room_id WHERE user_id = ?", Room.class);
         query.setParameter(1, userID);
-        for (Object room : query.getResultList()) {
+        for(Object room: query.getResultList()){
             rooms.add((Room) room);
         }
         return rooms;
@@ -51,10 +49,10 @@ public class RoomPersistenceImpl implements IRoomPersistence {
     public List<File> loadRoomFiles(int roomID, int userID) {
         List<File> files = new LinkedList<>();
         Query query = manager.createNativeQuery("SELECT * from files WHERE room_id = ?", File.class);
-        query.setParameter(1, roomID);
-        for (Object file : query.getResultList()) {
+        query.setParameter(1, roomID);  
+        for(Object file: query.getResultList()){
             files.add((File) file);
-        }
+        }      
         return files;
     }
 
