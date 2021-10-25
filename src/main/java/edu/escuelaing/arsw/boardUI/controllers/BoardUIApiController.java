@@ -20,6 +20,7 @@ public class BoardUIApiController {
         } catch (Exception ex) {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
-
     }
+
+	
 }

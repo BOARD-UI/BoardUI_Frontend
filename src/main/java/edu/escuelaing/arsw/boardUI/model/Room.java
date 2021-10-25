@@ -47,12 +47,28 @@ public class Room {
         return roomId;
     }
 
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
     public String gettitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getURL() {
         return URL;
+    }
+
+    public void setURL(String uRL) {
+        URL = uRL;
+    }
+
+    public void setNumMembers(Integer numMembers) {
+        this.numMembers = numMembers;
     }
 
     public void addMember(Integer members) {

@@ -33,13 +33,13 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
         .anyRequest().authenticated()
-        .and().formLogin().loginPage("/welcome").permitAll();
+        .and().formLogin().loginPage("/welcome").permitAll().defaultSuccessUrl("/home", true);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-        .antMatchers("/css/**", "/js/**", "/public/**");
+        .antMatchers("/css/**", "/js/**", "/img/**", "/public/**");
     }
 
     @Bean
