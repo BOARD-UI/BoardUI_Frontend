@@ -19,14 +19,15 @@ roomManager = (function(){
         _connectAndSubscribeToRoom(callback);
     }
 
-    let createNewRoom = function(title, numMembers){
+    let createNewRoom = function(title, numMembers, callback){
         let room = {title: title, numMembers: numMembers, url: ""}
         return $.ajax({
             url: "/room",
             type: 'POST',
             data: JSON.stringify(room),
             contentType: "application/json",
-            error: function(req, err){ console.log('Error: ' + req + "\n" + err); }
+            error: function(req, err){ console.log('Error: ' + req + "\n" + err); },
+            complete: function(data) {callback();}
         });
     }
 

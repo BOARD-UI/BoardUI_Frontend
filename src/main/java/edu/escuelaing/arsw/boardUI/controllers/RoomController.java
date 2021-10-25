@@ -25,8 +25,10 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
+import edu.escuelaing.arsw.boardUI.services.BoardUIServicesException;
 import edu.escuelaing.arsw.boardUI.services.impl.*;
 import edu.escuelaing.arsw.boardUI.model.File;
+import edu.escuelaing.arsw.boardUI.model.Permission;
 import edu.escuelaing.arsw.boardUI.model.Room;
 import edu.escuelaing.arsw.boardUI.model.User;
 
@@ -41,6 +43,9 @@ public class RoomController {
 
     @Autowired
     FileServices fs;
+
+    @Autowired
+    PermissionServices ps;
 
     @Autowired
     private Environment env;
@@ -79,10 +84,15 @@ public class RoomController {
 
     @PostMapping("/room")
     @ResponseBody
-    public String createNewRoom(Principal principal, Model model, @RequestBody Room room){
-        room.setURL(principal.getName()+"/"+room.gettitle());
+    public String createNewRoom(Principal principal, Model model, @RequestBody Room room) throws BoardUIServicesException{
+        room.setURL(principal.getName()+"_"+room.gettitle());
         rs.saveRoom(room);
-        return principal.getName()+"/"+room.gettitle();
+        Permission permission = new Permission();
+        permission.setRoomId(room.getRoomId());
+        permission.setUserId(us.getUserByUsername(principal.getName()).getId());
+        permission.setType("Access");
+        ps.savePermission(permission);
+        return principal.getName()+"_"+room.gettitle();
     }
 
     @RequestMapping(path = "/room/{roomId}/file", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)

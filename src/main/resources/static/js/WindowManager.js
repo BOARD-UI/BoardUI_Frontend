@@ -42,15 +42,14 @@ windowManager = (function(){
 
         document.getElementById("room_menu-btn").addEventListener("click", () => {
             let data = document.getElementById("room_menu-input").value;
-            let mode = document.getElementById("room_menu-cb").value;
-            
-            if(mode == "on" && data != ""){
-                roomManager.createNewRoom(data, 10, (url) => {roomManager.connectToNewRoom(url, _getUserRooms);});
+            let mode = document.getElementById("room_menu-cb").checked;
+            console.log(mode);
+            if(mode){
+                roomManager.createNewRoom(data, 10, () => {$("#window_menu-rooms").empty();_getUserRooms();});
             }else {
-                roomManager.connectToNewRoom(data, _getUserRooms);
+                roomManager.connectToNewRoom(data, () => {$("#window_menu-rooms").empty();_getUserRooms();});
             }
-            document.getElementById("room_menu-btn").classList.remove("active");
-            
+            document.getElementById("room_menu").classList.remove("active");
         });
 
 
