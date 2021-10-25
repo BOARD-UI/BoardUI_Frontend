@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,12 +78,11 @@ public class RoomController {
     }
 
     @PostMapping("/room")
-    public void createNewRoom(Principal principal, Model model, String title, int numMembers){
-        Room room = new Room();
-        room.setTitle(title);
-        room.setNumMembers(numMembers);
-        room.setURL("/room/"+title);
+    @ResponseBody
+    public String createNewRoom(Principal principal, Model model, @RequestBody Room room){
+        room.setURL(principal.getName()+"/"+room.gettitle());
         rs.saveRoom(room);
+        return principal.getName()+"/"+room.gettitle();
     }
 
     @RequestMapping(path = "/room/{roomId}/file", method = RequestMethod.POST, consumes = MediaType.ALL_VALUE)

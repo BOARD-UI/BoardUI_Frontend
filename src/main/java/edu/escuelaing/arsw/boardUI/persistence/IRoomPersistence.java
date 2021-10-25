@@ -12,5 +12,7 @@ public interface IRoomPersistence {
     List<Room> loadRoomsByUser(int userID);
 
     List<File> loadRoomFiles(int roomID, int userID);
+
+    Room getRoomByURL(String url);
     
 }

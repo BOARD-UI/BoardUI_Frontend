@@ -56,4 +56,11 @@ public class RoomPersistenceImpl implements IRoomPersistence {
         return files;
     }
 
+    @Override
+    public Room getRoomByURL(String url) {
+        Query query = manager.createNativeQuery("SELECT * from rooms WHERE url = ?", Room.class);
+        query.setParameter(1, url);
+        return (Room) query.getSingleResult();
+    }
+
 }

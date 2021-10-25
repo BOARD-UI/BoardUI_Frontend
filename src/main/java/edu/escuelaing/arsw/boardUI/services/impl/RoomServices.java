@@ -34,5 +34,10 @@ public class RoomServices implements IRoomServices{
         return rp.loadRoomFiles(roomID, userID);
     }
 
+    @Override
+    public Room getRoomByURL(String url) {
+        return rp.getRoomByURL(url);
+    }
+
     
 }

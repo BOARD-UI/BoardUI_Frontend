@@ -26,11 +26,33 @@ windowManager = (function(){
         document.getElementById("window_rooms-btn").addEventListener("click", () => {
             $("#window_rooms-menu").toggleClass("active");
             $("#window_rooms-btn").toggleClass("active");
+
+            if(!document.getElementById("window_rooms-menu").classList.contains("active")) {
+                document.getElementById("room_menu").classList.remove("active");
+            }
         });
 
         document.getElementById("add_tab-btn").addEventListener("click",() => {
             if(!document.getElementById("add_tab-btn").classList.contains("desactive")) _createNewFileTab();
         });
+
+        document.getElementById("add_room-btn").addEventListener("click",() => {
+            $("#room_menu").toggleClass("active");
+        });
+
+        document.getElementById("room_menu-btn").addEventListener("click", () => {
+            let data = document.getElementById("room_menu-input").value;
+            let mode = document.getElementById("room_menu-cb").value;
+            
+            if(mode == "on" && data != ""){
+                roomManager.createNewRoom(data, 10, (url) => {roomManager.connectToNewRoom(url, _getUserRooms);});
+            }else {
+                roomManager.connectToNewRoom(data, _getUserRooms);
+            }
+            document.getElementById("room_menu-btn").classList.remove("active");
+            
+        });
+
 
         window.addEventListener("mouseup", () => {_mouseIsDown = false;});
 

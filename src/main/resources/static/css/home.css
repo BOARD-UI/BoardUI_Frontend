@@ -317,3 +317,53 @@
     border-radius: 0.375rem;
     color:rgba(255, 255, 255, 0.5);
 }
+
+.room_menu {
+    position: fixed;
+    left: 15vw;
+    padding: 0.375rem 0.75rem;
+    display: none;
+    flex-direction: row;
+    width: 20%;
+    height: 2vh;
+    align-items: center;
+    justify-content: space-between;
+    font-size: small;
+    font-weight: bold;
+    background-color: #959B9D;
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--font-light);
+    animation: slideIn 0.375s;
+}
+
+.room_menu.active {
+    display: flex;
+    left: 19.5vw;
+}
+
+.room_menu .checkbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 7vw;
+}
+
+.room_menu .room_menu-input {
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.1625rem 0.375rem;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0%;
+        left: 15vw;
+    }
+    to {
+        opacity: 100%;
+        left: 19.5vw;
+    }
+}

@@ -20,13 +20,25 @@ roomManager = (function(){
     }
 
     let createNewRoom = function(title, numMembers){
-        let room = {title: title, numMembers: numMembers}
+        let room = {title: title, numMembers: numMembers, url: ""}
         return $.ajax({
-            url: "/room/"+_roomId,
+            url: "/room",
             type: 'POST',
             data: JSON.stringify(room),
             contentType: "application/json",
             error: function(req, err){ console.log('Error: ' + req + "\n" + err); }
+        });
+    }
+
+    let connectToNewRoom = function(roomUrl, callback){
+        let url = {url: roomUrl}
+        return $.ajax({
+            url: "/permission/"+roomUrl,
+            type: 'POST',
+            data: JSON.stringify(url),
+            contentType: "application/json",
+            error: function(req, err){ console.log('Error: ' + req + "\n" + err); },
+            complete: function() {callback();}
         });
     }
 
@@ -58,6 +70,8 @@ roomManager = (function(){
         loadRoom: loadRoom,
         getUserRooms: loadRooms,
         connectToFile: subscribeToFile,
-        getCurrentRoomId: getCurrentRoomId
+        getCurrentRoomId: getCurrentRoomId,
+        connectToNewRoom: connectToNewRoom,
+        createNewRoom: createNewRoom
     }
 })();
