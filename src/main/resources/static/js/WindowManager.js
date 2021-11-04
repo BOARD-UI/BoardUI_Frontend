@@ -43,13 +43,13 @@ windowManager = (function(){
         document.getElementById("room_menu-btn").addEventListener("click", () => {
             let data = document.getElementById("room_menu-input").value;
             let mode = document.getElementById("room_menu-cb").checked;
-            console.log(mode);
+            console.log(data);
             if(mode){
                 roomManager.createNewRoom(data, 10, () => {$("#window_menu-rooms").empty();_getUserRooms();});
             }else {
                 roomManager.connectToNewRoom(data, () => {$("#window_menu-rooms").empty();_getUserRooms();});
             }
-            document.getElementById("room_menu").classList.remove("active");
+            $("#room_menu").fadeOut(250, () => {document.getElementById("room_menu").classList.remove("active");});
         });
 
 
@@ -155,6 +155,7 @@ windowManager = (function(){
                 _rooms[key].element.classList.remove("active");
             }else {
                 _rooms[key].element.classList.add("active");
+                $("#window_header-scroll-bar").empty();
                 roomManager.loadRoom(_rooms[key].id, _loadUserRoom);
             }
         }  

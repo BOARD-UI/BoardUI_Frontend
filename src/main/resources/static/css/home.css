@@ -357,6 +357,20 @@
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+.room_menu i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.1625rem 0.375rem;
+}
+
+.room_menu i:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
 @keyframes slideIn {
     from {
         opacity: 0%;
