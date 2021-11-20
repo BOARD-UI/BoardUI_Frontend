@@ -1,5 +1,0 @@
-DELETE FROM Requests;
-DELETE FROM Files;
-DELETE FROM Permissions;
-DELETE FROM Rooms;
-DELETE FROM Users;

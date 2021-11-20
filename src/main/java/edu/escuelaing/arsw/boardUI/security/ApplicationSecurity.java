@@ -1,7 +1,5 @@
 package edu.escuelaing.arsw.boardUI.security;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Bean;
@@ -17,15 +15,12 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    DataSource dataSource;
+    private BoardUIAuthenticationProvider authProvider;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth)
     throws Exception {
-        auth.jdbcAuthentication()
-        .dataSource(dataSource)
-        .usersByUsernameQuery("SELECT username, password, TRUE FROM users WHERE username = ?")
-        .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM users WHERE username = ?");
+        auth.authenticationProvider(authProvider);
     }
 
     @Override
@@ -39,7 +34,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-        .antMatchers("/css/**", "/js/**", "/img/**", "/public/**", "/prop/**");
+        .antMatchers("/static/**", "/templates/public/**");
     }
 
     @Bean
