@@ -16,7 +16,7 @@ loginService = (function(){
         document.getElementById("signin_button").addEventListener("click", () => { postRegister(); });
         document.getElementById("login_button").addEventListener("click", () => { postLogin(); });
 
-        $("#world_svg").load('templates/public/world.html');
+        $("#world_svg").load('/templates/public/world.html');
     
         for(let tab of tabs){
             tab.addEventListener("click", (evt) => {_clickTab(evt)}, false);
