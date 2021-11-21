@@ -18,23 +18,20 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     private BoardUIAuthenticationProvider authProvider;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth)
-    throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests()
-        .anyRequest().authenticated()
-        .and().formLogin().loginPage("/welcome").permitAll().defaultSuccessUrl("/home", true);
+        http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/welcome").permitAll()
+                .defaultSuccessUrl("/home", true);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-        .antMatchers("/static/**", "/templates/public/**");
+        web.ignoring().antMatchers("/static/**", "/templates/public/**", "/app/**");
     }
 
     @Bean
