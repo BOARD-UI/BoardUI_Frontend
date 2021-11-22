@@ -9,7 +9,7 @@ function CardInput(props) {
       </span>
       <input
         type={props.type}
-        class="form_input-text"
+        className="form_input-text"
         aria-label={props.place}
         placeholder={props.place}
         id={props.id}

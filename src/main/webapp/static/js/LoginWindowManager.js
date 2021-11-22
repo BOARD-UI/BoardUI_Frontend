@@ -17,7 +17,7 @@ loginService = (function () {
     document.getElementById("login_button").addEventListener("click", () => {
       postLogin();
     });
-
+    $("#world_svg").load("/templates/public/world.html");
     for (let tab of tabs) {
       tab.addEventListener(
         "click",

@@ -1,4 +1,4 @@
-loginService = (function () {
+let loginService = (function () {
   const tabs = document.getElementsByClassName("card_tab");
   const cards = document.getElementsByClassName("card_body");
   const inputs = document.getElementsByClassName("form_input-text");
