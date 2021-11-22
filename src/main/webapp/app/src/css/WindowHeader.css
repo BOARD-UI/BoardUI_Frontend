@@ -1,0 +1,26 @@
+.window_header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: var(--color-dark-grey);
+	height: 6%;
+	border-top-right-radius: 0.75rem;
+	border-top-left-radius: 0.75rem;
+}
+
+.window_header-tabs {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	padding-left: 1rem;
+}
+
+.window_header-tab-bar {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	overflow-x: hidden;
+	width: 90%;
+	max-width: 1237px;
+}

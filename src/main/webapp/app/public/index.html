@@ -5,9 +5,11 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="theme-color" content="#000000" />
+	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 	<title>Login!</title>
+
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -15,12 +17,20 @@
 <body font-family: 'Montserrat' , sans-serif;>
 	<div id="root"></div>
 </body>
-
-
+<!--
 <script src="./js/LoginWindowManager.js"></script>
 <script>
 	window.addEventListener("DOMContentLoaded", () => {
 		loginService.init();
+	});
+</script>
+-->
+
+<script src="./js/WindowManager.js"></script>
+<script src="./js/RoomManager.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		windowManager.init();
 	});
 </script>
 
