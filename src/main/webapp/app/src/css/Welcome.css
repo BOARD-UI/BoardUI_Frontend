@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+div {
+	font-family: 'Montserrat',
+		sans-serif;
+}
+
 .Container {
 	display: flex;
 	align-items: center;
@@ -11,5 +16,5 @@
 
 .imgsvg {
 	width: 100%;
-	max-width: 600px;
+	max-width: 440px;
 }

@@ -63,7 +63,7 @@ function CardUI() {
                   </a>
                 </div>
               </div>
-              {<CardButton text="Login" />}
+              {<CardButton text="Login" id="login_button" />}
             </div>
           </div>
         }
@@ -108,10 +108,9 @@ function CardUI() {
               />
             }
             <div className="centered_column card_body-end">
-              {<CardButton text="Sign in" />}
+              {<CardButton text="Sign in" id="signin_button" />}
             </div>
           </div>
-          /
         </div>
       </form>
     </div>

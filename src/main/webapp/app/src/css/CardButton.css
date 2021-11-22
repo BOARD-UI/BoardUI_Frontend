@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+div {
+	font-family: 'Montserrat',
+		sans-serif;
+}
+
 .form_input-button {
 	display: flex;
 	justify-content: center;
