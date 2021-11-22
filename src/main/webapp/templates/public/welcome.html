@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login!</title>
-    <link rel="stylesheet" href="/static/css/login.css"/>
+    <link rel="stylesheet" href="/static/css/login.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
+
 <body>
     <div class="container">
         <div id="world_svg"></div>
@@ -26,27 +28,27 @@
             <form action="" method="POST" name="f">
                 <div class="card_body active" id="login">
                     <div class="centered_column form_logo">
-                        <img src="/static/img/icon.png" alt=""/>
+                        <img src="/static/img/icon.png" alt="" />
                     </div>
-    
+
                     <div class="centered_column">
                         <div class="form_input">
                             <span class="form_input-icon"><i class="fas fa-user"></i></span>
                             <input type="text" class="form_input-text" aria-label="Username" placeholder="Username"
                                 id="login_username" name="username" />
                         </div>
-        
+
                         <div class="form_input">
                             <span class="form_input-icon"><i class="fas fa-unlock-alt"></i></span>
-                            <input type="password" class="form_input-text" aria-label="Password" placeholder="Password" 
-                                id="login_password" name="password"/>
+                            <input type="password" class="form_input-text" aria-label="Password" placeholder="Password"
+                                id="login_password" name="password" />
                         </div>
                     </div>
-    
+
                     <div class="centered_column card_body-end">
                         <div class="centered_row form_options">
                             <div>
-                                <input type="checkbox" name="remember_me" id="remember_me" class="form_input-check"/>
+                                <input type="checkbox" name="remember_me" id="remember_me" class="form_input-check" />
                                 <label class="form_option-label">Remember me</label>
                             </div>
                             <div>
@@ -55,12 +57,12 @@
                         </div>
                         <input type="submit" value="Login" class="form_input-button" id="login_button" />
                     </div>
-    
+
                 </div>
-    
+
                 <div class="card_body" id="register">
                     <div class="centered_column form_logo">
-                        <img src="/static/img/icon.png" alt=""/>
+                        <img src="/static/img/icon.png" alt="" />
                     </div>
                     <div class="centered_column">
                         <div class="form_input">
@@ -68,23 +70,23 @@
                             <input type="text" class="form_input-text" aria-label="Name" placeholder="Name"
                                 id="reg_name" name="username" />
                         </div>
-    
+
                         <div class="form_input">
                             <span class="form_input-icon"><i class="fas fa-user"></i></span>
                             <input type="text" class="form_input-text" aria-label="Username" placeholder="Username"
                                 id="reg_username" name="username" />
                         </div>
-    
+
                         <div class="form_input">
                             <span class="form_input-icon"><i class="fas fa-envelope"></i></span>
                             <input type="text" class="form_input-text" aria-label="Username" placeholder="Mail"
                                 id="reg_email" name="mail" />
                         </div>
-        
+
                         <div class="form_input">
                             <span class="form_input-icon"><i class="fas fa-unlock-alt"></i></span>
-                            <input type="password" class="form_input-text" aria-label="Password" placeholder="Password" 
-                                id="reg_password" name="password"/>
+                            <input type="password" class="form_input-text" aria-label="Password" placeholder="Password"
+                                id="reg_password" name="password" />
                         </div>
                     </div>
                     <div class="centered_column card_body-end">
@@ -98,9 +100,10 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="/static/js/LoginWindowManager.js"></script>
     <script>
-        window.addEventListener("DOMContentLoaded",() => {
+        window.addEventListener("DOMContentLoaded", () => {
             loginService.init();
         });
     </script>
 </body>
+
 </html>

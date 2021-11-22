@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.Container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 100vw;
+	height: 100vh;
+	background-image: url(../img/background.jpg);
+}
+
+.imgsvg {
+	width: 100%;
+	max-width: 300px;
+}

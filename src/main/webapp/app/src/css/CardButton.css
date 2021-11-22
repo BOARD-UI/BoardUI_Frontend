@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.form_input-button {
+	display: flex;
+	justify-content: center;
+	padding-left: 0.25rem;
+	align-items: center;
+	background-color: #0872DF;
+	border: none;
+	border-radius: 0.25rem;
+	width: 30%;
+	height: 2rem;
+	font-size: medium;
+	cursor: pointer;
+	color: #fff;
+	transition: all 0.2s;
+}
