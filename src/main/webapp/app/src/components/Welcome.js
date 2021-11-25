@@ -2,6 +2,8 @@ import React from "react";
 import "../css/Welcome.css";
 import { CardUI } from "./CardUI";
 import LogoSvg from "../img/world.svg";
+import { render } from "react-dom";
+
 function Welcome(props) {
   return (
     <React.Fragment>

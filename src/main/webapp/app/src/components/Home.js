@@ -1,9 +1,8 @@
 import React from "react";
+import { render } from "react-dom";
 import "../css/Home.css";
 import { Window } from "./Window";
 
-function Home(props) {
-  return <div className="Container">{<Window />}</div>;
-}
+const Home = () => <div className="Container">{<Window />}</div>;
 
 export { Home };

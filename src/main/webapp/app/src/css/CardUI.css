@@ -1,10 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-div {
-	font-family: 'Montserrat',
-		sans-serif;
-}
-
 *,
 *::after,
 *::before {
@@ -22,12 +15,6 @@ img {
 	--color-dark-grey: #2a363b;
 	--font-light: rgba(255, 255, 255, 0.75);
 	--font-dark: rgba(42, 54, 59, 0.67);
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-body {
-	font-family: 'Montserrat', sans-serif;
 }
 
 .container {
