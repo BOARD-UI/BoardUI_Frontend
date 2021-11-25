@@ -1,0 +1,17 @@
+.file_loader {
+	width: 60%;
+	height: 40%;
+	border: 4px dashed grey;
+	border-radius: 0.75rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: x-large;
+	color: grey;
+}
+
+.file_loader i {
+	font-size: 5vw;
+	margin-bottom: 1rem;
+}
