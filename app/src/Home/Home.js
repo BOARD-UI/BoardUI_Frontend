@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import "./Home.css";
 import { Window } from "../Window/Window";
 
