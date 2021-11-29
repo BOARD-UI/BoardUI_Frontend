@@ -85,3 +85,4 @@ nb-configuration.xml
 application.properties
 system.properties
 ./app/node_modules
+./app/src/firebase-config.js

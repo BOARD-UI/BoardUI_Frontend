@@ -1,6 +1,7 @@
 import React from "react";
-import FileUploader from "/public/js/FileUploader.js";
-function DyDZone(props) {
+import "./D&DZone.css";
+
+function DDZone(props) {
   return (
     <div>
       <div class="file_loader-container">
@@ -17,9 +18,8 @@ function DyDZone(props) {
           />
         </div>
       </div>
-      <script src={FileUploader}></script>
     </div>
   );
 }
 
-export { DyDZone };
+export { DDZone };

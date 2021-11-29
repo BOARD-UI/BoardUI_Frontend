@@ -1,5 +1,8 @@
 import React from "react";
 import "./WindowBody.css";
+
+import { DDZone } from "../D&DZone/D&DZone";
+
 function WindowBody() {
   return (
     <div className="window_body">
@@ -36,7 +39,9 @@ function WindowBody() {
           </div>
         </div>
       </div>
-      <div className="content" id="window_body-content"></div>
+      <div className="content" id="window_body-content">
+        {<DDZone />}
+      </div>
     </div>
   );
 }
