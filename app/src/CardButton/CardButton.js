@@ -8,6 +8,7 @@ function CardButton(props) {
       value={props.text}
       className="form_input-button"
       id={props.id}
+      onClick={() => props.functionToDo()}
     />
   );
 }

@@ -14,9 +14,6 @@ loginService = (function () {
     document.getElementById("signin_button").addEventListener("click", () => {
       postRegister();
     });
-    document.getElementById("login_button").addEventListener("click", () => {
-      postLogin();
-    });
 
     for (let tab of tabs) {
       tab.addEventListener(
@@ -63,12 +60,6 @@ loginService = (function () {
     _form.submit();
   };
 
-  let postLogin = function () {
-    _fixForm("regForm", "loginForm");
-    _form.action = "/welcome";
-    _form.submit();
-  };
-
   let _clickTab = function (evt) {
     evt.preventDefault();
     let activeTab = evt.target.classList.contains("card_tab")
@@ -90,7 +81,6 @@ loginService = (function () {
 
   return {
     init: init,
-    login: postLogin,
     register: postRegister,
   };
 })();
