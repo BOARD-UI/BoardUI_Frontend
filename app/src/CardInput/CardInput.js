@@ -14,6 +14,8 @@ function CardInput(props) {
         placeholder={props.place}
         id={props.id}
         name={props.place}
+        value={props.value}
+        onChange={(ev) => props.functionToDo(ev.target.value)}
       />
     </div>
   );

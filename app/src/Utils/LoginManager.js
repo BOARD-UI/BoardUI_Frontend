@@ -68,6 +68,7 @@ export class LoginManager {
     this._form.submit();
   };
 
+<<<<<<< HEAD:app/src/Utils/LoginManager.js
   postLogin(){
     this._fixForm("regForm", "loginForm");
     this._form.action = this._api+"/authenticate";
@@ -75,6 +76,9 @@ export class LoginManager {
   };
 
   _clickTab(evt){
+=======
+  let _clickTab = function (evt) {
+>>>>>>> 269a5ede0b397fb8d4b6bdb02a74249831e6ce1d:app/public/js/LoginWindowManager.js
     evt.preventDefault();
     let activeTab = evt.target.classList.contains("card_tab")
       ? evt.target
@@ -92,4 +96,13 @@ export class LoginManager {
     activeCard.classList.add("active");
     return false;
   };
+<<<<<<< HEAD:app/src/Utils/LoginManager.js
 };
+=======
+
+  return {
+    init: init,
+    register: postRegister,
+  };
+})();
+>>>>>>> 269a5ede0b397fb8d4b6bdb02a74249831e6ce1d:app/public/js/LoginWindowManager.js

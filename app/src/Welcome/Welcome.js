@@ -2,13 +2,24 @@ import React from "react";
 import "./Welcome.css";
 import { CardUI } from "../CardUI/CardUI";
 import LogoSvg from "../img/world.svg";
+import { LoginLogoutServices } from "../LoginLogOut/LoginLogoutServices";
 
-function Welcome(props) {
+function Welcome() {
+  const { email, setEmail, password, setPassword, login } =
+    LoginLogoutServices();
   return (
     <React.Fragment>
       <div className="Container">
         <img className="imgsvg" src={LogoSvg} alt="BoardUI Logo" />
-        {<CardUI />}
+        {
+          <CardUI
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            login={login}
+          />
+        }
       </div>
     </React.Fragment>
   );
