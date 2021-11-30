@@ -1,9 +1,12 @@
 import React from "react";
 import "./WindowBody.css";
+import { CardButton } from "../CardButton/CardButton";
 
 import { DDZone } from "../D&DZone/D&DZone";
+import { LoginLogoutServices } from "../LoginLogOut/LoginLogoutServices";
 
 function WindowBody() {
+  const { logout } = LoginLogoutServices();
   return (
     <div className="window_body">
       <div id="window_rooms-menu" className="window_rooms-menu">
@@ -36,6 +39,13 @@ function WindowBody() {
               <h5>Files</h5>
             </div>
             <div className="content" id="window_menu-files"></div>
+            {
+              <CardButton
+                text="Log out"
+                id="logout_button"
+                functionToDo={logout}
+              />
+            }
           </div>
         </div>
       </div>
