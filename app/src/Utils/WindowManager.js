@@ -1,24 +1,31 @@
-windowManager = (function(){
-    
-    const _scroll_btns = document.getElementsByClassName("header_scroll-btn");
-    let _mouseIsDown = false;
-    let _tabs = {};
-    let _rooms = {};
-    let _currentRoomFiles = {};
-    let _newFileCounter = 1;
+import $ from "jquery";
 
-    let init = function(){
+export class WindowManager {
+    
+    constructor(document) {
+        this.document = document;
+        this._api = process.env.REACT_APP_API_URL;
+        this._scroll_btns = this.document.getElementsByClassName("header_scroll-btn");
+        this._mouseIsDown = false;
+        this._tabs = {};
+        this._rooms = {};
+        this._currentRoomFiles = {};
+        this._newFileCounter = 1;
+        this.init();
+    }
+
+    init(){
         
-        for(let btn of _scroll_btns){
+        for(let btn of this._scroll_btns){
             btn.addEventListener("mousedown", (evt) =>{
-                _mouseIsDown = true;
+                this._mouseIsDown = true;
                 if (evt.target.classList.contains("fa-less-than")) {
-                    _scrollTabBar(-100);
-                    setTimeout(() => {_periodicScrollTabBar(-10)}, 300);
+                    this._scrollTabBar(-100);
+                    setTimeout(() => {this._periodicScrollTabBar(-10)}, 300);
                 }
                 else if (evt.target.classList.contains("fa-greater-than")) {
-                    _scrollTabBar(100);
-                    setTimeout(() => {_periodicScrollTabBar(10)}, 300);
+                    this._scrollTabBar(100);
+                    setTimeout(() => {this._periodicScrollTabBar(10)}, 300);
                 }
             });
         }
@@ -33,7 +40,7 @@ windowManager = (function(){
         });
 
         document.getElementById("add_tab-btn").addEventListener("click",() => {
-            if(!document.getElementById("add_tab-btn").classList.contains("desactive")) _createNewFileTab();
+            if(!document.getElementById("add_tab-btn").classList.contains("desactive")) this._createNewFileTab();
         });
 
         document.getElementById("add_room-btn").addEventListener("click",() => {
@@ -45,49 +52,54 @@ windowManager = (function(){
             let mode = document.getElementById("room_menu-cb").checked;
             console.log(data);
             if(mode){
-                roomManager.createNewRoom(data, 10, () => {$("#window_menu-rooms").empty();_getUserRooms();});
+                //roomManager.createNewRoom(data, 10, () => {$("#window_menu-rooms").empty();this._getUserRooms();});
             }else {
-                roomManager.connectToNewRoom(data, () => {$("#window_menu-rooms").empty();_getUserRooms();});
+                //roomManager.connectToNewRoom(data, () => {$("#window_menu-rooms").empty();this._getUserRooms();});
             }
             $("#room_menu").fadeOut(250, () => {document.getElementById("room_menu").classList.remove("active");});
         });
 
 
-        window.addEventListener("mouseup", () => {_mouseIsDown = false;});
+        window.addEventListener("mouseup", () => {this._mouseIsDown = false;});
 
-        _scrollTabBar(0);
+        this._scrollTabBar(0);
 
-        _getUserRooms();
+        this._getUserRooms();
+
+        document.getElementById("add_tab-btn").classList.remove("desactive");
     }
 
-    let _scrollTabBar = function(direction){ 
+    _scrollTabBar(direction){ 
         const bar = document.getElementById("window_header-scroll-bar");
         let prevValue = bar.scrollLeft;
         bar.scrollLeft += direction;
-        for(let btn of _scroll_btns){
-            if(btn.classList.contains("fa-less-than") && bar.scrollLeft == 0) btn.classList.add("desactive");
-            else if(btn.classList.contains("fa-greater-than") && prevValue == bar.scrollLeft) btn.classList.add("desactive");
+        for(let btn of this._scroll_btns){
+            if(btn.classList.contains("fa-less-than") && bar.scrollLeft === 0) btn.classList.add("desactive");
+            else if(btn.classList.contains("fa-greater-than") && prevValue === bar.scrollLeft) btn.classList.add("desactive");
             else btn.classList.remove("desactive");
         } 
     }
     
-    let _periodicScrollTabBar = function(direction){
-        if (_mouseIsDown) {
-            _scrollTabBar(direction);
-            setTimeout(()=>{_periodicScrollTabBar(direction)}, 10);
+    _periodicScrollTabBar(direction){
+        if (this._mouseIsDown) {
+            this._scrollTabBar(direction);
+            setTimeout(()=>{this._periodicScrollTabBar(direction)}, 10);
         }
     }
 
-    let _closeFileTab = function(tabId){}
+    _closeFileTab(tabId){
+    }
 
-    let _createNewFileTab = function(name = "newFile" + _newFileCounter, extension = "txt", content = "D&DZone", created = true, file = ""){
+    _createNewFileTab(name = "newFile" + this._newFileCounter, extension = "txt", content = "D&DZone", created = true, file = ""){
         
+
+        console.log("why!?");
         console.log(name, extension, content, created, file);
 
         let element = document.createElement("div");
         element.classList.add("card_tab");
-        element.id = "file_tab-"+(Object.keys(_tabs).length+1);
-        element.addEventListener("click", () => {_changeTab(element.id)});
+        element.id = "file_tab-"+(Object.keys(this._tabs).length+1);
+        element.addEventListener("click", () => {this._changeTab(element.id)});
 
         let span1 = document.createElement("span"),
         span2 = document.createElement("span"),
@@ -97,41 +109,41 @@ windowManager = (function(){
         span2.innerText = name+"."+extension;
         //i1.classList.add("far"); i1.classList.add("fa-times-circle");
 
-        if(!created) _currentRoomFiles[file].tab_Id = element.id;
-        else _newFileCounter++;
+        if(!created) this._currentRoomFiles[file].tab_Id = element.id;
+        else this._newFileCounter++;
 
         element.appendChild(span1); element.appendChild(span2); element.appendChild(i1);
         document.getElementById("window_header-scroll-bar").appendChild(element);
-        _tabs[element.id] = { element: element, content: content};
+        this._tabs[element.id] = { element: element, content: content};
 
-        _changeTab(element.id);
+        this._changeTab(element.id);
 
     }
 
-    let _changeTab = function(tabId){
+    _changeTab(tabId){
         console.log(tabId);
-        for(let key in _tabs){
-            if (key != tabId){
-                _tabs[key].element.classList.remove("active");
+        for(let key in this._tabs){
+            if (key !== tabId){
+                this._tabs[key].element.classList.remove("active");
             }else {
-                _tabs[key].element.classList.add("active");
-                _changeWindowBodyToTabContent(_tabs[key].content);
+                this._tabs[key].element.classList.add("active");
+                this._changeWindowBodyToTabContent(this._tabs[key].content);
             }
         }  
     }
 
-    let _changeWindowBodyToTabContent = function(content){
+    _changeWindowBodyToTabContent(content){
         $("#window_body-content").empty();
-        if (content == "D&DZone"){
-            $("#window_body-content").load("/html/D&DZone", () => {
+        if (content === "D&DZone"){
+            $("#window_body-content").load("D&DZone.html", () => {
                 alert("loaded");
-                uploaderService.init(); 
-                uploaderService.setUrl("/room/"+roomManager.getCurrentRoomId()+"/file");
+                //uploaderService.init(); 
+                //uploaderService.setUrl(_api+"/room/"+roomManager.getCurrentRoomId()+"/file");
             });
             $("#window_body-content").hide().fadeIn(600);
 
         }else {
-            $("#window_body-content").load("/html/TextArea", () => {
+            $("#window_body-content").load("TextArea.html", () => {
                 document.getElementById("file_text-area").value = content;
             });
             
@@ -139,38 +151,38 @@ windowManager = (function(){
         }
     }
 
-    let _getUserRooms = function(){
-        roomManager.getUserRooms((data) => {
+    _getUserRooms(){
+        /*roomManager.getUserRooms((data) => {
             data.forEach(room => {
                 _createUserRoomBtn(room);
             });
-        })
+        })*/
     }
 
-    let _changeRoom = function(roomID){
-        _newFileCounter = 1;
-        for(let key in _rooms){
+    _changeRoom(roomID){
+        this._newFileCounter = 1;
+        for(let key in this._rooms){
             console.log(key, roomID);
-            if (key != roomID){
-                _rooms[key].element.classList.remove("active");
+            if (key !== roomID){
+                this._rooms[key].element.classList.remove("active");
             }else {
-                _rooms[key].element.classList.add("active");
+                this._rooms[key].element.classList.add("active");
                 $("#window_header-scroll-bar").empty();
-                roomManager.loadRoom(_rooms[key].id, _loadUserRoom);
+                //roomManager.loadRoom(this._rooms[key].id, _loadUserRoom);
             }
         }  
     }
 
-    let _loadUserRoom = function(files){
-        _currentRoomFiles = {};
+    _loadUserRoom(files){
+        this._currentRoomFiles = {};
         $("#window_menu-files").empty();
         files.forEach(file => {
-            _createRoomFileBtn(file);
+            this._createRoomFileBtn(file);
         });
         document.getElementById("add_tab-btn").classList.remove("desactive");
     }
 
-    let _getFileIcon = function(extension){
+    _getFileIcon(extension){
         let icon, prefix;
         switch (extension.toLowerCase()) {
             case 'css':
@@ -198,17 +210,17 @@ windowManager = (function(){
         return [prefix, icon];
     }
 
-    let _createRoomFileBtn = function(file){
+    _createRoomFileBtn(file){
         let element = document.createElement("div");
         element.classList.add("room-btn");
-        element.id = "file_btn-"+(Object.keys(_currentRoomFiles).length+1);
-        element.addEventListener("click", () => {console.log(element.id);_createOrChangeTab(element.id);});
+        element.id = "file_btn-"+(Object.keys(this._currentRoomFiles).length+1);
+        element.addEventListener("click", () => {console.log(element.id); this._createOrChangeTab(element.id);});
 
         let i1 = document.createElement("i"),
         span1 = document.createElement("span"),
         i2 = document.createElement("i");
         
-        let icon = _getFileIcon(file.extension);
+        let icon = this._getFileIcon(file.extension);
         i1.classList.add(icon[0]); i1.classList.add(icon[1]);
         span1.innerText = file.name;
 
@@ -216,14 +228,14 @@ windowManager = (function(){
 
         element.appendChild(i1); element.appendChild(span1); element.appendChild(i2);
         document.getElementById("window_menu-files").appendChild(element);
-        _currentRoomFiles[element.id] = { element: element, file: file, tab_id: null, isCreated: false};
+        this._currentRoomFiles[element.id] = { element: element, file: file, tab_id: null, isCreated: false};
     }
 
-    let _createUserRoomBtn = function(room){
+    _createUserRoomBtn(room){
         let element = document.createElement("div");
         element.classList.add("room-btn");
-        element.id = "room_tab-"+(Object.keys(_rooms).length+1);
-        element.addEventListener("click", () => {_changeRoom(element.id)});
+        element.id = "room_tab-"+(Object.keys(this._rooms).length+1);
+        element.addEventListener("click", () => {this._changeRoom(element.id)});
 
         let i1 = document.createElement("i"),
         span1 = document.createElement("span"),
@@ -231,27 +243,23 @@ windowManager = (function(){
         
         i1.classList.add("far"); i1.classList.add("fa-window-restore");
         span1.innerText = room.title;
-        _newFileCounter++;
+        this._newFileCounter++;
         i2.classList.add("far"); i1.classList.add("fa-times-circle");
 
         element.appendChild(i1); element.appendChild(span1); element.appendChild(i2);
         document.getElementById("window_menu-rooms").appendChild(element);
-        _rooms[element.id] = { element: element, id: room.roomId};
+        this._rooms[element.id] = { element: element, id: room.roomId};
 
     }
 
-    let _createOrChangeTab = function(file){
-        console.log(file, _currentRoomFiles);
-        if(!_currentRoomFiles[file].isCreated){
-            _currentRoomFiles[file].isCreated = true;
-            _createNewFileTab(_currentRoomFiles[file].file.name, _currentRoomFiles[file].file.extension, _currentRoomFiles[file].file.content, false, file);
+    _createOrChangeTab(file){
+        console.log(file, this._currentRoomFiles);
+        if(!this._currentRoomFiles[file].isCreated){
+            this._currentRoomFiles[file].isCreated = true;
+            this._createNewFileTab(this._currentRoomFiles[file].file.name, this._currentRoomFiles[file].file.extension, this._currentRoomFiles[file].file.content, false, file);
         }else {
-            _changeTab(_currentRoomFiles[file].tab_Id)
+            this._changeTab(this._currentRoomFiles[file].tab_Id)
         }
     }
 
-    return {
-        init: init
-    }
-
-})();
+};

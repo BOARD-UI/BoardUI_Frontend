@@ -1,34 +1,39 @@
-loginService = (function () {
-  const tabs = document.getElementsByClassName("card_tab");
-  const cards = document.getElementsByClassName("card_body");
-  const inputs = document.getElementsByClassName("form_input-text");
+import $ from "jquery";
 
-  let _form = document.getElementsByTagName("form")[0];
+export class LoginManager {
+  
+  constructor(document){
 
-  let _formSchemas = {
-    loginForm: ["login_username", "login_password"],
-    regForm: ["reg_name", "reg_username", "reg_mail", "reg_password"],
-  };
+    this._api = process.env.REACT_APP_API_URL;
+    this.tabs = document.getElementsByClassName("card_tab");
+    this.cards = document.getElementsByClassName("card_body");
+    this.inputs = document.getElementsByClassName("form_input-text");
+    this._formSchemas = {
+      loginForm: ["login_username", "login_password"],
+      regForm: ["reg_name", "reg_username", "reg_mail", "reg_password"],
+    };
 
-  let init = function () {
+  }
+
+  init () {
     document.getElementById("signin_button").addEventListener("click", () => {
-      postRegister();
+      this.postRegister();
     });
     document.getElementById("login_button").addEventListener("click", () => {
-      postLogin();
+      this.postLogin();
     });
 
-    for (let tab of tabs) {
+    for (let tab of this.tabs) {
       tab.addEventListener(
         "click",
         (evt) => {
-          _clickTab(evt);
+          this._clickTab(evt);
         },
         false
       );
     }
 
-    for (let input of inputs) {
+    for (let input of this.inputs) {
       input.addEventListener(
         "focusin",
         (evt) => {
@@ -46,30 +51,30 @@ loginService = (function () {
     }
   };
 
-  let _fixForm = function (toClear, toSend) {
-    for (let argument of _formSchemas[toClear]) {
+  _fixForm(toClear, toSend){
+    for (let argument of this._formSchemas[toClear]) {
       let htmlElement = document.getElementById(argument);
       htmlElement.name = "";
     }
-    for (let argument of _formSchemas[toSend]) {
+    for (let argument of this._formSchemas[toSend]) {
       let htmlElement = document.getElementById(argument);
       htmlElement.name = argument.replace("login_", "").replace("reg_", "");
     }
   };
 
-  let postRegister = function () {
-    _fixForm("loginForm", "regForm");
-    _form.action = "/welcome/newuser";
-    _form.submit();
+  postRegister(){
+    this._fixForm("loginForm", "regForm");
+    this._form.action = this._api+"/users";
+    this._form.submit();
   };
 
-  let postLogin = function () {
-    _fixForm("regForm", "loginForm");
-    _form.action = "/welcome";
-    _form.submit();
+  postLogin(){
+    this._fixForm("regForm", "loginForm");
+    this._form.action = this._api+"/authenticate";
+    this._form.submit();
   };
 
-  let _clickTab = function (evt) {
+  _clickTab(evt){
     evt.preventDefault();
     let activeTab = evt.target.classList.contains("card_tab")
       ? evt.target
@@ -77,20 +82,14 @@ loginService = (function () {
     let activeCard = document.getElementById(
       activeTab.href.replaceAll("tab:", "")
     );
-    for (let card of cards) {
+    for (let card of this.cards) {
       card.classList.remove("active");
     }
-    for (let tab of tabs) {
+    for (let tab of this.tabs) {
       tab.classList.remove("active");
     }
     activeTab.classList.add("active");
     activeCard.classList.add("active");
     return false;
   };
-
-  return {
-    init: init,
-    login: postLogin,
-    register: postRegister,
-  };
-})();
+};
