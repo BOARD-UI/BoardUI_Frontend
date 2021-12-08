@@ -1,20 +1,26 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import { App } from "./App/App";
 import { BrowserRouter } from "react-router-dom";
-import firebaseConfig from "./firebase-config";
+
 import { FirebaseAppProvider } from "reactfire";
+import firebaseConfig from "./BoardUI/Commons/Config/firebase-config";
+
+import { App } from "./BoardUI/BoardUI";
+import "./BoardUI/Commons/Statics/css/index.css";
+import { ContextProvider } from "./BoardUI/Commons/Components/ContextProvider";
+
 
 ReactDOM.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+      <React.StrictMode>
         <Suspense fallback={"Conectando la app..."}>
-          <App />
+          <ContextProvider>
+            <App />
+          </ContextProvider>
         </Suspense>
-      </FirebaseAppProvider>
-    </React.StrictMode>
+      </React.StrictMode>
+    </FirebaseAppProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
