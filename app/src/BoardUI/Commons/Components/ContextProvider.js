@@ -1,5 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 import { RoomManager } from "../Utils/RoomManager";
+import SockJS from 'sockjs-client';
+import Stomp from "stompjs";
+
+const api = process.env.REACT_APP_API_URL;
+const socket = new SockJS(api+'/stompendpoint');
+const stompClient = Stomp.over(socket);
 
 export const AppContext = createContext();
 
@@ -15,21 +21,13 @@ export function ContextProvider({ children }) {
     const [currentUsername, setCurrentUsername] = useState(null);
     const [popUpIsHidden, setPopUpIsHidden] = useState(true);
     const [activeTab, setActiveTab] = useState(null);
+    
 
     const roomManager = new RoomManager();
 
     const auth = { isAuthenticated, currentUsername, setIsAuthenticated, setCurrentUsername };
 
     const state = { rooms, files, tabs, connectedToRoom, setConnectedToRoom, activeTab, currentRoom, currentFile };
-
-    const room = { notifyRoom };
-
-    useEffect(() => {
-        if (!stompClient){
-            let socket = new SockJS(api+'/stompendpoint');
-            setStompClient(Stomp.over(socket));
-        }
-    }, [stompClient]);
 
     useEffect(() => {
         if(currentRoom !== null){
@@ -42,6 +40,8 @@ export function ContextProvider({ children }) {
     const notifyRoom = (roomChange) => {
         if (stompClient !== null) stompClient.send("/app/room."+currentRoom, {}, JSON.stringify(roomChange));
     }
+
+    const room = { notifyRoom };
 
     const handleRoomChanges = (roomChange) => {
         if(roomChange === "update"){
@@ -76,14 +76,15 @@ export function ContextProvider({ children }) {
         setPopUpIsHidden(true);
     }
 
+
     const getFiles = (roomId) => {
         roomManager.getRoomFiles(roomId).then(
             (newFiles) => {
                 setFiles([...newFiles]);
             }
         );
-        //roomManager.connectAndSubscribeToRoom(() => { getFiles(roomId); })
         setCurrentRoom(roomId);
+        setTabs([]);
     }
 
     const addTab = (name, extension, content) => {
@@ -93,11 +94,12 @@ export function ContextProvider({ children }) {
             content
         }
         setTabs([...state.tabs, tab]);
+        setActiveTab(tabs.length);
     }
 
     const changeTab = (tab) => {
         setActiveTab(tab);
-        setCurrentFile(tabs[tab].content);
+        if (tabs[tab]) setCurrentFile(tabs[tab].content);
     }
 
     const closeTab = () => {
@@ -110,7 +112,12 @@ export function ContextProvider({ children }) {
         if (tabs.length === 0){
             setActiveTab(null);
             setCurrentFile(null);
-        }else if (activeTab >= tabs.length) changeTab(activeTab - 1);
+        }else if (activeTab >= tabs.length) {
+            changeTab(activeTab - 1);
+        }else if (activeTab !== null && tabs.length > 0) {
+            console.log(tabs);
+            changeTab(activeTab)
+        }
     }, [tabs])
 
     const connectToRoom = (url) => {
@@ -119,10 +126,6 @@ export function ContextProvider({ children }) {
 
     const createNewRoom = (title) => {
         roomManager.createNewRoom(title, currentUsername, () => {getRooms(currentUsername)});
-    }
-
-    const notifyRoom = (type) => {
-        roomManager.notifyRoom(type);
     }
 
     return (

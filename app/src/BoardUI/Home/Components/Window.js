@@ -9,11 +9,10 @@ import "../css/Window.css";
 export function Window() {
     const [menuIsHidden, setmenuIsHidden] = useState(true);
     const { getRooms, auth} = useContext(AppContext);
-    const [stompClient, setStompClient] = useState(null);
 
     useEffect(() => {
         getRooms(auth.currentUsername);
-    }, []);
+    }, [auth.currentUsername]);
 
     const showMenu = () => {
         setmenuIsHidden(!menuIsHidden);

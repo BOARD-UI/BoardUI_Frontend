@@ -33,7 +33,7 @@ export class UploadManager{
         }
         
         this._removeDragData(ev);
-        console.log(this._file);
+        //console.log(this._file);
         return this._file;
     }
     

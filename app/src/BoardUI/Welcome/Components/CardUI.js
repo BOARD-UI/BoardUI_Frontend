@@ -10,7 +10,7 @@ import "../css/CardUI.css";
 
 function CardUI() {
   
-  const { email, setEmail, password, setPassword, login } = LoginLogoutServices();
+  const { username, setUsername, password, setPassword, login } = LoginLogoutServices();
 
   return (
     <div className="card" id="card">
@@ -32,12 +32,12 @@ function CardUI() {
         <div className="centered_column">
           {
             <CardInput
-              place="Username/Email"
+              place="Username"
               id="login_username"
               icon="fas fa-user"
               type="text"
-              value={email}
-              functionToDo={setEmail}
+              value={username}
+              functionToDo={setUsername}
             />
           }
           {

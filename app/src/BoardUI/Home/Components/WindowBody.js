@@ -18,8 +18,6 @@ export function WindowBody({ menuIsHidden }) {
             <div className="content" id="window_body-content">
                 {state.currentFile !== null ?
                     <ConcurrentTextArea
-                        roomId={state.currentRoom}
-                        fileId={state.currentFile}
                     />
                     : (state.currentRoom !== null ? <DDZone roomId={state.currentRoom} /> : null)
                 }

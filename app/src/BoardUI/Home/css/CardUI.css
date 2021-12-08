@@ -64,7 +64,7 @@ img {
 	border-top-left-radius: 0.75rem;
 }
 
-.card_tab {
+.card_tab.window {
 	min-height: 26px;
 	min-width: 100px;
 	display: flex;
@@ -82,11 +82,11 @@ img {
 	transition: all 0.2s;
 }
 
-.card_tab:hover {
+.card_tab.window:hover {
 	background-color: rgba(255, 255, 255, 0.35);
 }
 
-.card_tab.active {
+.card_tab.window.active {
 	min-width: 190px;
 	width: 190px;
 	font-size: medium;
@@ -95,29 +95,29 @@ img {
 	color: rgba(42, 54, 59, 0.67);
 }
 
-.card_tab span:first-child {
+.card_tab.window span:first-child {
 	width: auto;
 	opacity: 100%;
 	display: block;
 }
 
-.card_tab span:nth-child(2) {
+.card_tab.window span:nth-child(2) {
 	opacity: 0%;
 	width: 0%;
 	display: none;
 }
 
-.card_tab span:nth-child(2) {
+.card_tab.window span:nth-child(2) {
 	opacity: 0%;
 	width: 0%;
 	display: none;
 }
 
-.card_tab i:last-child {
+.card_tab.window i:last-child {
 	display: none;
 }
 
-.card_tab.active i:last-child {
+.card_tab.active.window i:last-child {
 	display: block;
 	margin-left: auto;
 	margin-right: 2%;
@@ -125,17 +125,17 @@ img {
 	color: rgba(42, 54, 59, 0.3);
 }
 
-.card_tab.active i:last-child:hover {
+.card_tab.active.window i:last-child:hover {
 	color: rgba(42, 54, 59, 0.67);
 }
 
-.card_tab.active span:first-child {
+.card_tab.active.window span:first-child {
 	opacity: 0%;
 	width: 0%;
 	display: none;
 }
 
-.card_tab.active span:nth-child(2) {
+.card_tab.active.window span:nth-child(2) {
 	display: block;
 	width: auto;
 	cursor: default;

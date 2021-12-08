@@ -29,7 +29,6 @@ export function RoomSubmenu() {
         if (mode === 'Create'){
             createNewRoom(roomText);
         }else {
-            console.log("pos si", roomText);
             connectToRoom(roomText);
         }
     }

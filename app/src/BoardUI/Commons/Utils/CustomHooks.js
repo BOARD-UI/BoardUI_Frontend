@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { AppContext } from "../Components/ContextProvider";
+import $ from "jquery";
 
 export function useToggleClass(className) {
 
@@ -17,14 +18,27 @@ export function useToggleClass(className) {
 export function LoginLogoutServices() {
     const { auth } = useContext(AppContext);
     const authHandler = getAuth();
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const getUsernameByEmail = (username, password) => {
+      let user = {username, password}
+      return $.ajax({
+          url: process.env.REACT_APP_API_URL+"/authentication",
+          type: 'POST',
+          data: JSON.stringify(user),
+          contentType: "application/json",
+          error: function(req, err){ console.log('Error: ' + req + "\n" + err); },
+          complete: function(data) { return data; }
+      });
+    }
   
     const login = async () => {
       try {
-        await signInWithEmailAndPassword(authHandler, email, password);
+        let userEmail = await getUsernameByEmail(username,password);
+        await signInWithEmailAndPassword(authHandler, userEmail, password);
+        auth.setCurrentUsername(username);
         auth.setIsAuthenticated(true);
-        console.log(authHandler.currentUser);
       } catch (error) {
         console.log(error);
       }
@@ -37,8 +51,8 @@ export function LoginLogoutServices() {
     };
   
     return {
-      email,
-      setEmail,
+      username,
+      setUsername,
       password,
       setPassword,
       login,

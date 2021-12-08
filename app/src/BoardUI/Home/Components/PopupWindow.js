@@ -1,6 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from 'react-dom';
 import { Drawer } from "./Drawer";
+import SockJS from 'sockjs-client';
+import Stomp from "stompjs";
+
+
+const api = process.env.REACT_APP_API_URL;
+let socket = new SockJS(api+'/stompendpoint');
+let stompClient = Stomp.over(socket);
+stompClient.connect({}, function (frame) {});
 
 export const PopupWindow = (props) => {
     const [container, setContainer] = useState(null);
@@ -20,7 +28,7 @@ export const PopupWindow = (props) => {
           "width=600,height=400,left=200,top=200"
         );
         newWindow.current.document.write(props.file.content);
-        console.log(newWindow.current.document.body.innerHTML);
+        //console.log(newWindow.current.document.body.innerHTML);
         newWindow.current.document.body.innerHTML = "<div id='drawer_container'>"+newWindow.current.document.body.innerHTML+"</div>"
         setContainer(newWindow.current.document.getElementById('drawer_container'));
 
@@ -35,5 +43,5 @@ export const PopupWindow = (props) => {
         }
     }, []);
   
-    return container && createPortal(<Drawer roomId={props.roomId} filename={props.file.name}/>, container);
+    return container && createPortal(<Drawer roomId={props.roomId} stompClient={stompClient} filename={props.file.name}/>, container);
   };

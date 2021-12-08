@@ -12,44 +12,55 @@ class StringChange {
     }
 }
 
+const api = process.env.REACT_APP_API_URL;
 let currentCursorPosition = {start:0, end:0};
+let socket = new SockJS(api+'/stompendpoint');
+let stompClient = Stomp.over(socket);
+stompClient.connect({}, function (frame) {});
 
 export function ConcurrentTextArea({ }) {
 
     const ignoredKeys = ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "Control", "Alt", "OS", "CapsLock", "Shift", "NumLock", "Escape", "ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"];
     const { state, room } = useContext(AppContext);
     const [popup, setPopUp] = useState(false);
-    const [stompClient, setStompClient] = useState(null);
     const textArea = useRef(null);
-    const api = process.env.REACT_APP_API_URL;
+    const [subscription, setSubscription] = useState(null);
 
     let file = state.files.filter(file => file.fileId === state.currentFile)[0];
+    const removeTextAreaListener = () => {
+        
+    } 
 
     useEffect(() => {
-        if (textArea.current){
-            textArea.current.addEventListener("selectionchange", (event) => {
-                let start = textArea.current.selectionStart
-                let end = textArea.current.selectionEnd;
-                console.log(start,end);
-                currentCursorPosition = {start, end};
-            });
-        };
-    },[]);
+        return () => {
+            console.log("unmounting");
+        }
+    }, []);
+
+    const selectionHandler = (event) => {
+        if (textArea !== null){
+            let start = textArea.current.selectionStart
+            let end = textArea.current.selectionEnd;
+            //console.log(start,end);
+            currentCursorPosition = {start, end};
+        }
+    }
+    useEffect(() => {
+        if (textArea !== null){
+            textArea.current.addEventListener("selectionchange", selectionHandler);
+        }
+    },[textArea.current]);
 
     useEffect(() => {
-        if (!stompClient){
-            let socket = new SockJS(api+'/stompendpoint');
-            setStompClient(Stomp.over(socket));
+        if (subscription !== null) subscription.unsubscribe();
+        setSubscription(null);
+    },[state.activeTab]);
+
+    useEffect(() => {
+        if (subscription === null){
+            setSubscription(stompClient.subscribe("/app/roomFile."+state.currentRoom+"|"+state.currentFile, updateTextArea));
         }
-        else{
-            try {
-                stompClient.disconnect();
-            } catch (error) {}
-            stompClient.connect({}, function (frame) {
-                stompClient.subscribe("/app/roomFile."+state.currentRoom+"|"+state.currentFile, updateTextArea);
-            });
-        }
-    }, [state.currentFile, stompClient])
+    },[subscription]);
 
     const publishToStomp = (stringChange) => {
         if (stompClient !== null) stompClient.send("/app/roomFile."+state.currentRoom+"|"+state.currentFile, {}, JSON.stringify(stringChange));
@@ -105,7 +116,7 @@ export function ConcurrentTextArea({ }) {
                 textArea.current.selectionEnd = textArea.current.selectionStart;
             }
         } catch (error) {
-            console.log(error, stringChange);
+            //console.log(error, stringChange);
         }
     }
 
@@ -115,7 +126,7 @@ export function ConcurrentTextArea({ }) {
     }
     let cleanPopup = () => {
         setPopUp(false);
-        console.log("CLEANED!");
+        //console.log("CLEANED!");
     }
 
     return (

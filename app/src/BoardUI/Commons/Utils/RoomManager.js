@@ -1,6 +1,4 @@
 import $ from "jquery";
-import SockJS from 'sockjs-client';
-import Stomp from "stompjs";
 
 export class RoomManager{
 
@@ -17,6 +15,7 @@ export class RoomManager{
     }
 
     createNewRoom(title, username, callback){
+        //console.log(title, username);
         let room = {title: title, numMembers: 10, url: ""}
         return $.ajax({
             url: this._api+"/user/"+username+"/rooms",
@@ -40,7 +39,7 @@ export class RoomManager{
     }
 
     connectToNewRoom(roomUrl, username, callback){
-        console.log("dentro de connectToNewRoom", roomUrl, username);
+        //console.log("dentro de connectToNewRoom", roomUrl, username);
         return $.ajax({
             url: this._api+`/room/permission`,
             type: 'POST',

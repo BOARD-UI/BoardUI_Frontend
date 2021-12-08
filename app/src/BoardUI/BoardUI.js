@@ -10,8 +10,9 @@ import { Page404 } from "./Page404/Page404";
 export function App() {
     
     const { auth } = useContext(AppContext);
-    auth.setCurrentUsername("J-382")
+    //Quitar esto jaja
     auth.setIsAuthenticated(true);
+    auth.setCurrentUsername("J382");
     return (
         <Routes>
             <Route exact path="/" 

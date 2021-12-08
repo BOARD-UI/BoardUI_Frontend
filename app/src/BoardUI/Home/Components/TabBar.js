@@ -4,7 +4,7 @@ import { Tab } from "./Tab";
 
 import "../css/TabsButton.css";
 
-export function TabBar({ }) {
+export function TabBar({ props }) {
 
     let desactive = " desactive";
     const { state, addTab, changeTab, closeTab } = useContext(AppContext);
