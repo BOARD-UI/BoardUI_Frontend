@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+div {
+	font-family: 'Montserrat',
+		sans-serif;
+}
+
+.form_input {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	color: #fff;
+	width: 80%;
+	margin: 0.5rem 0px 0.5rem 0px;
+}
+
+.form_input-icon {
+	width: 10%;
+	align-items: center;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	white-space: nowrap;
+	background-color: #0872DF;
+	border: 0 solid #ced4da;
+	border-radius: 0.15rem;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.form_input-text {
+	border: none;
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+	background-color: rgba(255, 255, 255, 0.25);
+	width: 100%;
+	color: rgba(255, 255, 255, 0.75);
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+.form_input.active {
+	border-radius: 0.25rem;
+	outline: 2px solid #075CD8;
+}

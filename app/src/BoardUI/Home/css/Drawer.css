@@ -1,0 +1,38 @@
+*, *::after, *::before {
+    margin: 0px;
+    padding: 0px;
+}
+
+.boardui_drawer {
+    background-color: rgba(0,0,0,1);
+    border: 2px black solid;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+.content-loaded {
+    width: 100vw;
+    height: 100vh;
+    background-color: grey;
+}
+
+.color_picker {
+    width: 2vw;
+    height: 2vw;
+}
+
+.color_picker-grid {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border: 1px black solid;
+    width: 6vw;
+    height: 6vw;
+}
+
+.color_picker-row {
+    display: flex;
+    flex-direction: row;
+}

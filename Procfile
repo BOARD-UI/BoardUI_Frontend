@@ -1,1 +1,0 @@
-web: java -Dserver.port=$PORT -jar target/BOARD-UI-0.0.1-SNAPSHOT.jar

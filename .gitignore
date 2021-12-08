@@ -83,3 +83,9 @@ nb-configuration.xml
 ##############################
 .DS_Store
 application.properties
+system.properties
+node_modules
+
+*.env
+./app/node_modules
+./app/src/firebase-config.js
