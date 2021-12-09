@@ -69,8 +69,6 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
   ![](Img/Gifs/9.AddFiles.gif)
 * **Help and Documentation:** La aplicación cuenta con un manual de usuario, el cual explica todas las acciones que se pueden realizar junto con descripciones y demostraciones visuales.
 [Manual de Usuario](https://angie-tatiana-medina-gil.gitbook.io/board.ui/ "Title").
-
-https://angie-tatiana-medina-gil.gitbook.io/board.ui/
 ## Enlace🔗
 http://board-ui.azurewebsites.net/  
 
