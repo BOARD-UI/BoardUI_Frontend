@@ -10,9 +10,7 @@ import { Page404 } from "./Page404/Page404";
 export function App() {
     
     const { auth } = useContext(AppContext);
-    //Quitar esto jaja
-    auth.setIsAuthenticated(true);
-    auth.setCurrentUsername("J382");
+    console.log(process.env.REACT_APP_ALGO);
     return (
         <Routes>
             <Route exact path="/" 

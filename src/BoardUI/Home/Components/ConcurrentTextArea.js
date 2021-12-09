@@ -21,15 +21,16 @@ stompClient.connect({}, function (frame) {});
 export function ConcurrentTextArea({ }) {
 
     const ignoredKeys = ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "Control", "Alt", "OS", "CapsLock", "Shift", "NumLock", "Escape", "ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"];
-    const { state, room } = useContext(AppContext);
+    const { state, room, saveFile } = useContext(AppContext);
     const [popup, setPopUp] = useState(false);
     const textArea = useRef(null);
     const [subscription, setSubscription] = useState(null);
 
     let file = state.files.filter(file => file.fileId === state.currentFile)[0];
-    const removeTextAreaListener = () => {
-        
-    } 
+    
+    const saveFileData = () => {
+        if (textArea.current.value !== file.content) saveFile(file.fileId, textArea.current.value);
+    }
 
     useEffect(() => {
         return () => {
@@ -38,7 +39,7 @@ export function ConcurrentTextArea({ }) {
     }, []);
 
     const selectionHandler = (event) => {
-        if (textArea !== null){
+        if (textArea.current !== null){
             let start = textArea.current.selectionStart
             let end = textArea.current.selectionEnd;
             //console.log(start,end);
@@ -75,6 +76,7 @@ export function ConcurrentTextArea({ }) {
                 let sc = new StringChange("insert", "", 0, 0);
                 if (event.key === "Enter") sc = new StringChange("insert", "\n", start, end);
                 else if (event.key === "Backspace") sc = new StringChange("delete", null, start, end);
+                else if (event.key === "Tab") sc = new StringChange("insert", "    ", start, end);
                 else sc = new StringChange("insert", event.key, start, end);
                 publishToStomp(sc);
             }
@@ -143,7 +145,7 @@ export function ConcurrentTextArea({ }) {
                     type="button"
                     value="Compile"
                     onClick={compile}
-                    disabled={file.extension !== "html"}
+                    disabled={file === null || file === undefined || file.extension !== "html"}
                 />
             </div>
             <textarea
@@ -152,14 +154,15 @@ export function ConcurrentTextArea({ }) {
                 onPaste={onPaste}
                 onKeyDown={onKeyDown}
                 ref={textArea}
-                value={file.content}
+                value={file !== undefined ? file.content : ""}
             />
             {popup && file ? 
                 <PopupWindow 
                     cleanPopup={cleanPopup}
-                    file={file}
+                    content={textArea.current.value}
                     roomId={state.currentRoom}
-                    cssFiles={state.files.filter(file => file.extension === "css")}
+                    file={file}
+                    files={state.files.filter(file => file.extension === "css")}
                 /> 
                 : null
             } 

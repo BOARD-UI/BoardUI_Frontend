@@ -4,7 +4,6 @@ import "../css/Drawer.css"
 
 export const Drawer = (props) => {
     const stompClient = props.stompClient;
-    const [ctx, setCtx] = useState(null);
     const canvas = useRef(null);
     let currX = 0, currY = 0, isDown = false, color = "black";
 
@@ -12,7 +11,6 @@ export const Drawer = (props) => {
         isDown = false;
         currX = 0;
         currY = 0;
-        setCtx(canvas.current.getContext('2d'));
         stompClient.subscribe("/app/roomCanvas."+props.roomId, updateDraw);
     }, []);
 
@@ -21,6 +19,7 @@ export const Drawer = (props) => {
     };
 
     function findPos(type, e) {
+        let ctx = canvas.current.getContext('2d');
         if (type === 'down') {
             currX = e.clientX - canvas.current.offsetLeft;
             currY = e.clientY - canvas.current.offsetTop;
@@ -49,6 +48,7 @@ export const Drawer = (props) => {
     };
 
     function draw(prevX, prevY, currX, currY, color) {
+        let ctx = canvas.current.getContext('2d');
         ctx.beginPath();
         ctx.moveTo(prevX, prevY);
         ctx.lineTo(currX, currY);
@@ -56,14 +56,21 @@ export const Drawer = (props) => {
         ctx.lineWidth = 2;
         ctx.stroke();
         ctx.closePath();
+        
     };
 
     const updateDraw = function(drawChange){
         try {
-            let ms = JSON.parse(drawChange.body);
-            draw(ms.prevX, ms.prevY, ms.currX, ms.currY, ms.color);
+            let update = JSON.parse(drawChange.body);
+            console.log(update, update.length);
+            if(update.length === undefined) update = [JSON.stringify(update)];
+            for(let ms of update){
+                ms = JSON.parse(ms);
+                draw(ms.prevX, ms.prevY, ms.currX, ms.currY, ms.color);
+            }
+            
         } catch (error) {
-            //console.log(drawChange);
+            console.log("efe", error,drawChange);
         }
         
     };

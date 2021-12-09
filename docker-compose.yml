@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+    web:
+        image: j382/boardui
+        container_name: web
+        ports:
+            - "80:3000"
+        environment:
+          - REACT_APP_API_URL=http://localhost:8080

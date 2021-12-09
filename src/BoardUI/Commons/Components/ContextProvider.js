@@ -52,7 +52,6 @@ export function ContextProvider({ children }) {
     const disconnect = () => {
         setFiles([]);
         setConnectedToRoom(false);
-        setCurrentRoom(null);
         stompClient.disconnect();
     }
 
@@ -118,6 +117,14 @@ export function ContextProvider({ children }) {
             changeTab(activeTab)
         }
     }, [tabs])
+
+    useEffect(() => {
+        if (!connectToRoom) {
+            setCurrentRoom(null);
+            setCurrentFile(null);
+        }
+    }, [connectedToRoom])
+
 
     const connectToRoom = (url) => {
         roomManager.connectToNewRoom(url, currentUsername, () => {getRooms(currentUsername)});
