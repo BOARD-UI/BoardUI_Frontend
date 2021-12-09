@@ -4,6 +4,9 @@
 -  Jose Ricardo Pérez de León
 -  Luis Gerardo Amaya Ortíz
 -  Juan Sebastián Mina Echavarría
+
+## Presentado
+Para la materia de **Arquitectura de Software (ARSW)** a **Sebastian Henao Pinzon**
  
 ## Resumen
 Tiempos modernos, UI’s modernas. Board.UI, es una herramienta para frontend developers que facilitará el flujo creativo de ideas y optimizará el proceso de creación de interfaces amigables para el usuario. 
