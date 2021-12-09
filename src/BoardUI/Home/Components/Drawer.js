@@ -79,8 +79,8 @@ export const Drawer = (props) => {
         <>
             <canvas 
                 ref={canvas} 
-                width={600}
-                height={600}
+                width={1920}
+                height={1080}
                 className="boardui_drawer"
                 onMouseDown={(e) => {findPos('down',e)}}
                 onMouseMove={(e) => {findPos('move',e)}}

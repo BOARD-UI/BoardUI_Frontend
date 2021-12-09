@@ -29,7 +29,7 @@ export function ConcurrentTextArea({ }) {
     let file = state.files.filter(file => file.fileId === state.currentFile)[0];
     
     const saveFileData = () => {
-        if (textArea.current.value !== file.content) saveFile(file.fileId, textArea.current.value);
+        if (textArea.current.value !== file.content) saveFile(file.fileId, textArea.current.value, () => {});
     }
 
     useEffect(() => {
@@ -124,8 +124,16 @@ export function ConcurrentTextArea({ }) {
 
     //Popup
     let compile = () => {
+        save();
         setPopUp(true);
+
     }
+
+    let save = () => {
+        saveFileData();
+        room.notifyRoom({type:"save", fileType: "file", roomFileId: state.currentRoom+"|"+state.currentFile});
+    }
+
     let cleanPopup = () => {
         setPopUp(false);
         //console.log("CLEANED!");
@@ -138,7 +146,7 @@ export function ConcurrentTextArea({ }) {
                     className="file_controller-btn"
                     type="button"
                     value="Save"
-                    onClick={() => {room.notifyRoom("save")}}
+                    onClick={save}
                 />
                 <input
                     className="file_controller-btn"

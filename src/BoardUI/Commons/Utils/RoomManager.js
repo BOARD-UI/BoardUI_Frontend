@@ -27,6 +27,19 @@ export class RoomManager{
         });
     }
 
+    saveFile(id, content, callback){
+        //console.log(title, username);
+        let file = {id, content}
+        return $.ajax({
+            url: this._api+"/file/update",
+            type: 'POST',
+            data: JSON.stringify(file),
+            contentType: "application/json",
+            error: function(req, err){ console.log('Error: ' + req + "\n" + err); },
+            complete: function(data) {callback();}
+        });
+    }
+
     leaveRoom(username, roomId, callback){
         return $.ajax({
             url: this._api+`/room/${roomId}/permission/remove`,

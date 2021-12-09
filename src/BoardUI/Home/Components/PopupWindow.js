@@ -41,7 +41,7 @@ export const PopupWindow = (props) => {
         newWindow.current = window.open(
           "",
           "",
-          "width=600,height=400,left=200,top=200"
+          "width=1920,height=1080,left=0,top=0"
         );
         newWindow.current.document.write(props.content);
         let css = loadCss(newWindow.current);

@@ -134,11 +134,15 @@ export function ContextProvider({ children }) {
         roomManager.createNewRoom(title, currentUsername, () => {getRooms(currentUsername)});
     }
 
+    const saveFile = (id, content, callback) => {
+        roomManager.saveFile(id, content, callback);
+    }
+
     return (
         <AppContext.Provider
             value={{ state, auth, getRooms, getFiles, addTab, changeTab, 
                      closeTab, showPopup, hidePopup, popUpIsHidden, connectToRoom, 
-                     createNewRoom, disconnect, leaveRoom, room}}
+                     createNewRoom, disconnect, leaveRoom, room, saveFile}}
         >
             {
                 children
