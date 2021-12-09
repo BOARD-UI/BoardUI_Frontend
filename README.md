@@ -59,6 +59,11 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 ![](Img/Diagramas/DiagramaDeClases.PNG)
 
 ## Requerimientos no funcionales
+### Disponibilidad
+
+Se realizaron pruebas con 125 usuarios concurrentes por 30 segundos aproximadamente, con una sola maquina recibiendo peticiones el porcentaje de error se acercaba al 60% al hacer un escalamiento horizontal el porcentaje de error bajo casi al 30%.
+https://pruebacorreoescuelaingeduco-my.sharepoint.com/:v:/g/personal/jose_perez-le_mail_escuelaing_edu_co/EY5ilGJ7Q5lFs7tkdQUSjIoBuL_DusIPr2DPMtPo44AiSQ?e=xK0x8g
+
 ### Usabilidad
 * **Aesthetic and Minimalista Design:** Se tiene un diseño minimalista puesto que el usuario en todas las instancias de uso de la aplicación solo se le muestra la información necesaria/relevante para lo que esta realizando. Por ejemplo
   * Aunque el usuario pertenezca a una sala, la lista de los archivos de esta no sera visible a menos que el usuario seleccione la sala  
