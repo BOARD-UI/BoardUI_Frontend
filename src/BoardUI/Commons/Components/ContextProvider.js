@@ -76,7 +76,6 @@ export function ContextProvider({ children }) {
         setPopUpIsHidden(true);
     }
 
-
     const getFiles = (roomId) => {
         roomManager.getRoomFiles(roomId).then(
             (newFiles) => {
