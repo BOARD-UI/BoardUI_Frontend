@@ -61,11 +61,16 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 ## Requerimientos no funcionales
 ### Usabilidad
 * **Aesthetic and Minimalista Design:** Se tiene un diseño minimalista puesto que el usuario en todas las instancias de uso de la aplicación solo se le muestra la información necesaria/relevante para lo que esta realizando. Por ejemplo
-  * Aunque el usuario pertenezca a una sala, la lista de los archivos de esta no sera visible a menos que el usuario seleccione la sala
-  * Cuando se selecciona una sala, no se tiene visibilidad del contenido de los archivos a menos que se seleccione
+  * Aunque el usuario pertenezca a una sala, la lista de los archivos de esta no sera visible a menos que el usuario seleccione la sala  
+  ![](Img/Gifs/6.JoinRoom.gif)
+  * Cuando se selecciona una sala, no se tiene visibilidad del contenido de los archivos a menos que se seleccione  
+  ![](Img/Gifs/8.DisconnectRoom.gif)
   * Al desconectarse de una sala, la lista de los archivos no sera visible
+  ![](Img/Gifs/9.AddFiles.gif)
 * **Help and Documentation:** La aplicación cuenta con un manual de usuario, el cual explica todas las acciones que se pueden realizar junto con descripciones y demostraciones visuales.
+[Manual de Usuario](https://angie-tatiana-medina-gil.gitbook.io/board.ui/ "Title").
 
+https://angie-tatiana-medina-gil.gitbook.io/board.ui/
 ## Enlace🔗
 http://board-ui.azurewebsites.net/  
 
