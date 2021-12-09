@@ -58,11 +58,18 @@ Los antecedentes que nos llevaron a pensar esta propuesta de proyecto fueron pri
 ### Diagrama de Clases
 ![](Img/Diagramas/DiagramaDeClases.PNG)
 
+## Requerimientos no funcionales
+### Usabilidad
+* **Aesthetic and Minimalista Design:** Se tiene un diseño minimalista puesto que el usuario en todas las instancias de uso de la aplicación solo se le muestra la información necesaria/relevante para lo que esta realizando. Por ejemplo
+  * Aunque el usuario pertenezca a una sala, la lista de los archivos de esta no sera visible a menos que el usuario seleccione la sala
+  * Cuando se selecciona una sala, no se tiene visibilidad del contenido de los archivos a menos que se seleccione
+  * Al desconectarse de una sala, la lista de los archivos no sera visible
+* **Help and Documentation:** La aplicación cuenta con un manual de usuario, el cual explica todas las acciones que se pueden realizar junto con descripciones y demostraciones visuales.
+
+## Enlace🔗
+http://board-ui.azurewebsites.net/  
+
 ## Enlace Taiga 🔗
 https://tree.taiga.io/project/angiemeg-boardui/timeline
-
-
-## Enlace Heroku 🔗
-https://board-ui.herokuapp.com/
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/1c29dacb74cd4b28a85e7fc3d5392d4d)](https://www.codacy.com/gh/BOARD-UI/BOARD.UI/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BOARD-UI/BOARD.UI&amp;utm_campaign=Badge_Grade)
